@@ -3,16 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>404 | 漏断&#39;s Blog</title>
+  <title>正则补充 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://houwenda.github.io/404/index.html">
+  <meta name="description" content="之前PHP笔记里的正则表达式部分略有不足（致命缺陷[滑稽]），在此进行一些补充，分为19点，当做备忘。主要来源于《正则表达式30分钟入门教程》，可以到http://deerchao.net/tutorials/regex/regex.htm查阅详细内容。  \b匹配这样的位置：它的前一个字符和后一个字符不全是(一个是,一个不是或不存在)\w \d匹配一个数字 \w匹配字母或数字或汉字或下划线 {n">
+<meta name="keywords" content="学习记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则补充">
+<meta property="og:url" content="http://houwenda.github.io/2018/01/29/regex-notes/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
+<meta property="og:description" content="之前PHP笔记里的正则表达式部分略有不足（致命缺陷[滑稽]），在此进行一些补充，分为19点，当做备忘。主要来源于《正则表达式30分钟入门教程》，可以到http://deerchao.net/tutorials/regex/regex.htm查阅详细内容。  \b匹配这样的位置：它的前一个字符和后一个字符不全是(一个是,一个不是或不存在)\w \d匹配一个数字 \w匹配字母或数字或汉字或下划线 {n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-21T14:19:15.938Z">
+<meta property="og:updated_time" content="2018-12-26T15:20:48.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404">
+<meta name="twitter:title" content="正则补充">
+<meta name="twitter:description" content="之前PHP笔记里的正则表达式部分略有不足（致命缺陷[滑稽]），在此进行一些补充，分为19点，当做备忘。主要来源于《正则表达式30分钟入门教程》，可以到http://deerchao.net/tutorials/regex/regex.htm查阅详细内容。  \b匹配这样的位置：它的前一个字符和后一个字符不全是(一个是,一个不是或不存在)\w \d匹配一个数字 \w匹配字母或数字或汉字或下划线 {n">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -36,7 +40,7 @@
           fancybox: false,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -222,11 +226,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-regex-notes" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/404/index.html" class="article-date">
-      <time datetime="2018-12-21T14:19:15.000Z" itemprop="datePublished">2018-12-21</time>
+      <a href="/2018/01/29/regex-notes/" class="article-date">
+      <time datetime="2018-01-29T06:42:43.000Z" itemprop="datePublished">2018-01-29</time>
 </a>
     </div>
   
@@ -237,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      404
+      正则补充
     </h1>
   
 
@@ -245,8 +249,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HWD/">HWD</a><a class="article-category-link" href="/categories/HWD/LTF/">LTF</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -254,42 +266,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>之前PHP笔记里的正则表达式部分略有不足（致命缺陷[滑稽]），在此进行一些补充，分为19点，当做备忘。主要来源于<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">《正则表达式30分钟入门教程》</a>，可以到<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">http://deerchao.net/tutorials/regex/regex.htm</a>查阅详细内容。</p>
+<ol>
+<li>\b匹配这样的位置：它的前一个字符和后一个字符不全是(一个是,一个不是或不存在)\w</li>
+<li>\d匹配一个数字</li>
+<li>\w匹配字母或数字或汉字或下划线</li>
+<li>{n,}重复n次或更多。{n,m}重复n到m次</li>
+<li>分支条件|，注意各条件顺序。匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。所以要把匹配较长、成立难度大的放在前面。如：\d{5}|\d{5}-\d{4}只会匹配前五个数字。</li>
+<li>反义。大写与小写反义，如\b与\B,\w与\W。另：[^x]匹配除x以外的任意字符[^dsafl]匹配除dsafl外的任意字符。例：&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</li>
+<li>向后引用。每个分组（）会自动分配组号，0表示整个表达式，1表示第一个（），以此类推。例：\b(\w+)\b\s+\1\b可匹配重复的单词。</li>
+<li>指定表达式组名。语法：(?<word>\w+)或(?‘Word’\w+)，反向引用这个分组捕获的内容，可用\k<word>。例：\b(?<word>\w+)\b\s+\k<word>\b可匹配重复的单词。</word></word></word></word></li>
+<li>（?:exp)匹配，但不捕获，也不分配组号。(?#comment)注释，不产生任何影响。</li>
+<li>零宽度正预测先行断言：（？=exp)断言自身出现的位置的后面能匹配表达式exp。例：\b\w+(?=ing\b)，匹配以ing结尾的单词的前面部分(除了ing以外的部分)。</li>
+<li>零宽度正回顾后发断言：（?&lt;=exp)断言自身出现的位置的前面能匹配表达式exp。例：(?&lt;=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)。</li>
+<li>注意：零宽断言只匹配一个位置，不消费任何字符！假如你想要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分：((?&lt;=\d)\d{3})+\b，用它对1234567890进行查找时结果是234567890。</li>
+<li>零宽度负预测先行断言：（?!exp)断言此位置的后面不能匹配表达式exp。例：\d{3}(?!\d)匹配三位数字，而且这三位数字的后面不能是数字。</li>
+<li>零宽度负回顾后发断言：（?&lt;!exp)断言此位置的前面不能匹配表达式exp。例：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。</li>
+<li>一个更能体现零宽断言真正用途的例子：(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)匹配不包含属性的简单HTML标签内里的内容。(?&lt;=&lt;(\w+)&gt;)指定了这样的前缀：被尖括号括起来的单词(比如可能是<b>)，然后是.*(任意的字符串),最后是一个后缀(?=&lt;\/\1&gt;)。注意后缀里的\/，它用到了前面提过的字符转义；\1则是一个反向引用，引用的正是捕获的第一组，前面的(\w+)匹配的内容，这样如果前缀实际上是<b>的话，后缀就是</b>了。整个表达式匹配的是<b>和</b>之间的内容(再次提醒，不包括前缀和后缀本身)。</b></li>
+<li>零宽断言的个人总结：“零宽”表示只匹配位置，不消费字符；“正”表示存在，用“=”，“负”表示不存在用“！”；“预测先行”看后面，“回顾后发”看前面，用”&lt;”。</li>
+<li>默认贪婪匹配。在次数标识符后面加“？”表示懒惰匹配。贪婪匹配尽量多的字符，懒惰匹配尽量少</li>
+<li>注意：最先开始的匹配拥有最高的优先权——The match that begins earliest wins。此原则高于贪婪/懒惰规则。</li>
+<li>关于平衡组和递归匹配，只能勉强看懂，根本不会用，放一个例子就溜了。例：匹配嵌套的<div>标签：&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?’Open’&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?’-Open’</div>)[^&lt;&gt;]*)+)*(?(Open)(?!))。</li>
+</ol>
 
-
-          
-        
       
       
         <div class="page-reward">
@@ -343,10 +342,76 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/01/29/regex-notes/">正则补充</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
+        <p><span>发布时间:</span>2018年01月29日 - 14时42分</p>
+        <p><span>最后更新:</span>2018年12月26日 - 23时20分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/01/29/regex-notes/" title="正则补充">http://houwenda.github.io/2018/01/29/regex-notes/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/01/29/regex-notes/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          VMware Workstation Pro12+Kali2017.3安装记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/28/php-e7-ac-94-e8-ae-b0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -364,9 +429,40 @@
 
 
 
-    
 
 
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/" title="上一篇: VMware Workstation Pro12+Kali2017.3安装记录">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/01/28/php-e7-ac-94-e8-ae-b0/" title="下一篇: PHP笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">NUST CTF 师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 

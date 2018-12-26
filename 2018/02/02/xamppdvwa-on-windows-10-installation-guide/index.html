@@ -3,16 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>404 | 漏断&#39;s Blog</title>
+  <title>XAMPP+DVWA on Windows 10 installation guide | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://houwenda.github.io/404/index.html">
+  <meta name="description" content="因为学习PHP时已经在电脑上安装了xampp，所以决定在此基础上安装dvwa（Damn Vulnerable Web Application靶场），结果error百出，重装了xampp四五遍才装好了dvwa，在此记录下过程。  百度下载xampp安装包，一键安装很方便。 下载dvwa压缩包 解压到xampp的htdocs目录（网页文件目录） 按照https://www.cnblogs.com/la">
+<meta name="keywords" content="CTF,tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XAMPP+DVWA on Windows 10 installation guide">
+<meta property="og:url" content="http://houwenda.github.io/2018/02/02/xamppdvwa-on-windows-10-installation-guide/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
+<meta property="og:description" content="因为学习PHP时已经在电脑上安装了xampp，所以决定在此基础上安装dvwa（Damn Vulnerable Web Application靶场），结果error百出，重装了xampp四五遍才装好了dvwa，在此记录下过程。  百度下载xampp安装包，一键安装很方便。 下载dvwa压缩包 解压到xampp的htdocs目录（网页文件目录） 按照https://www.cnblogs.com/la">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-21T14:19:15.938Z">
+<meta property="og:updated_time" content="2018-12-26T15:20:32.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404">
+<meta name="twitter:title" content="XAMPP+DVWA on Windows 10 installation guide">
+<meta name="twitter:description" content="因为学习PHP时已经在电脑上安装了xampp，所以决定在此基础上安装dvwa（Damn Vulnerable Web Application靶场），结果error百出，重装了xampp四五遍才装好了dvwa，在此记录下过程。  百度下载xampp安装包，一键安装很方便。 下载dvwa压缩包 解压到xampp的htdocs目录（网页文件目录） 按照https://www.cnblogs.com/la">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -36,7 +40,7 @@
           fancybox: false,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -222,11 +226,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-xamppdvwa-on-windows-10-installation-guide" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/404/index.html" class="article-date">
-      <time datetime="2018-12-21T14:19:15.000Z" itemprop="datePublished">2018-12-21</time>
+      <a href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/" class="article-date">
+      <time datetime="2018-02-02T07:28:58.000Z" itemprop="datePublished">2018-02-02</time>
 </a>
     </div>
   
@@ -237,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      404
+      XAMPP+DVWA on Windows 10 installation guide
     </h1>
   
 
@@ -245,8 +249,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HWD/">HWD</a><a class="article-category-link" href="/categories/HWD/LTF/">LTF</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -254,42 +266,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>因为学习PHP时已经在电脑上安装了xampp，所以决定在此基础上安装dvwa（Damn Vulnerable Web Application靶场），结果error百出，重装了xampp四五遍才装好了dvwa，在此记录下过程。</p>
+<ol>
+<li>百度下载xampp安装包，一键安装很方便。</li>
+<li>下载dvwa压缩包</li>
+<li>解压到xampp的htdocs目录（网页文件目录）</li>
+<li>按照<a href="https://www.cnblogs.com/layerlearner/archive/2016/09/13/layerlearner.html" target="_blank" rel="noopener">https://www.cnblogs.com/layerlearner/archive/2016/09/13/layerlearner.html</a>中的错误解决办法全部操作一遍。</li>
+<li>访问localhost/dvwa（解压目录），注意在系统设置中关闭所有代理选项，否则页面全部加载不出来！</li>
+<li>在安装页面createdatabase</li>
+<li>登录：默认用户admin,密码password</li>
+<li>注意修改security level，默认impossible（不可能攻破），可以在每个漏洞页面查看不同难度等级的PHP代码，也有对应的参考答案，确实很有帮助。</li>
+</ol>
+<p>总结：安装过程不复杂，但是各种配置文件、系统设置的问题容易让人找不到问题根源所在，因此比较耗费时间。每次访问页面都要关闭系统代理，比较麻烦。但是dvwa的内容很丰富，可用性很强。此外，在xampp基础上安装dvwa占用资源很少，安装完成后xampp文件夹只占半个G，相比较于虚拟机还是很有优势的。</p>
 
-
-          
-        
       
       
         <div class="page-reward">
@@ -343,10 +332,76 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
+        <p><span>发布时间:</span>2018年02月02日 - 15时28分</p>
+        <p><span>最后更新:</span>2018年12月26日 - 23时20分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/" title="XAMPP+DVWA on Windows 10 installation guide">http://houwenda.github.io/2018/02/02/xamppdvwa-on-windows-10-installation-guide/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/02/02/xamppdvwa-on-windows-10-installation-guide/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          How to install sqli-labs on Windows 10
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VMware Workstation Pro12+Kali2017.3安装记录</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -364,9 +419,40 @@
 
 
 
-    
 
 
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/" title="上一篇: How to install sqli-labs on Windows 10">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/" title="下一篇: VMware Workstation Pro12+Kali2017.3安装记录">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">NUST CTF 师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
