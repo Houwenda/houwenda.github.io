@@ -6,14 +6,14 @@
   <title>PHP文件和目录 笔记补充 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="笔记补充。   打开文件  语法：fopen(文件名或url，打开模式） 打开模式： 只读 r 以只读方式打开文件，指针指向文件头 读写 r+ 以读写方式打开文件，指针指向文件头 写入 w 以写入方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 读写 w+ 以读写方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 添加 a 以写入方式打开文件，指针指向文件尾，若不">
-<meta name="keywords" content="PHP,学习记录">
+<meta name="keywords" content="学习打卡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP文件和目录 笔记补充">
 <meta property="og:url" content="http://houwenda.github.io/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
 <meta property="og:description" content="笔记补充。   打开文件  语法：fopen(文件名或url，打开模式） 打开模式： 只读 r 以只读方式打开文件，指针指向文件头 读写 r+ 以读写方式打开文件，指针指向文件头 写入 w 以写入方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 读写 w+ 以读写方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 添加 a 以写入方式打开文件，指针指向文件尾，若不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-26T15:20:38.173Z">
+<meta property="og:updated_time" content="2018-12-26T16:20:14.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP文件和目录 笔记补充">
 <meta name="twitter:description" content="笔记补充。   打开文件  语法：fopen(文件名或url，打开模式） 打开模式： 只读 r 以只读方式打开文件，指针指向文件头 读写 r+ 以读写方式打开文件，指针指向文件头 写入 w 以写入方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 读写 w+ 以读写方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建 添加 a 以写入方式打开文件，指针指向文件尾，若不">
@@ -144,7 +144,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/CTF/" style="font-size: 10px;">CTF</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/environments/" style="font-size: 10px;">environments</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/学习记录/" style="font-size: 20px;">学习记录</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
+                        <a href="/tags/environments/" style="font-size: 10px;">environments</a> <a href="/tags/学习打卡/" style="font-size: 10px;">学习打卡</a>
                     </div>
                 </section>
                 
@@ -250,13 +250,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/HWD/">HWD</a><a class="article-category-link" href="/categories/HWD/LTF/">LTF</a>
+    <a class="article-category-link" href="/categories/LTF/">LTF</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习打卡/">学习打卡</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -277,8 +277,7 @@
 <p>写入 w 以写入方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建</p>
 <p>读写 w+ 以读写方式打开文件，指针指向文件头，若文件存在则清空，若不存在则尝试创建</p>
 <p>添加 a 以写入方式打开文件，指针指向文件尾，若不存在则尝试创建</p>
-<p>添加 a+ 以读写方式打开文件，指针指向文件尾，若不存在则尝试创建</p>
-<p>谨慎写入 x 以写入方式打开文件，指针指向文件头，若文件存在则返回false并警告</p>
+<p>添加 a+ 以读写方式打开文件，指针指向文件尾，若不存在则尝试创建<br><a id="more"></a><br>谨慎写入 x 以写入方式打开文件，指针指向文件头，若文件存在则返回false并警告</p>
 <p>谨慎写入 x+ 以写入方式打开文件，指针指向文件头，若文件存在则返回false并警告</p>
 <p>创建并写入 c 以写入方式打开文件，指针指向文件头，即使文件存在也不会失败或清空</p>
 <p>创建并读写 c+ 以读写方式打开文件，指针指向文件头，即使文件存在也不会失败或清空</p>
@@ -438,7 +437,7 @@
         <p><span>本文标题:</span><a href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
         <p><span>发布时间:</span>2018年02月06日 - 00时35分</p>
-        <p><span>最后更新:</span>2018年12月26日 - 23时20分</p>
+        <p><span>最后更新:</span>2018年12月27日 - 00时20分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/" title="PHP文件和目录 笔记补充">http://houwenda.github.io/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/</a>
             <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -458,7 +457,7 @@
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          NUST CTF 师傅们的blogs
+          师傅们的blogs
         
       </div>
     </a>
@@ -525,7 +524,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" title="上一篇: NUST CTF 师傅们的blogs">
+            <a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" title="上一篇: 师傅们的blogs">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -536,7 +535,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">NUST CTF 师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
