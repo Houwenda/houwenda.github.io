@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 13.33px;">速查备忘</a>
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 13.33px;">速查备忘</a>
                     </div>
                 </section>
                 
@@ -225,6 +225,72 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-hid-attack-with-P4wnP1-a-l-o-a" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/" class="article-date">
+      <time datetime="2019-01-22T00:45:45.000Z" itemprop="datePublished">2019-01-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p><a href="https://github.com/mame82/P4wnP1" target="_blank" rel="noopener">P4wnP1</a>基于树莓派zero (w)，是一个快捷高效的HID攻击平台，可以进行Windows密码破解、HID隐藏信道后门、模块化USB设备模拟等，于2017年2月第一次发布，现在主要开发者已停止对其开发，全力开发它的升级版——<a href="https://github.com/mame82/P4wnP1_aloa" target="_blank" rel="noopener">P4wnP1_aloa</a>。P4wnP1_aloa也是基于树莓派zero w，与P4wnP1善于高效攻击相比，P4wnP1_aloa更注重HID测试，提供web客户端，调整、配置更加方便。P4wnP1一次可以模拟8个HID设备，包括键盘、鼠标等。同时，P4wnP1_aloa使用的HIDscript基于JavaScript，无论是自定义脚本还是对RubberDucky的脚本进行改写都很方便。P4wnP1_aloa还可以通过自定义输入速度，随机时间间隔，更好的模拟人工操作，欺骗防护机制。<br>截止至本篇发表日期，P4wnP1_aloa的最新发布版本为2018年12月发布的v0.1.0-alpha2，相关信息见<a href="https://github.com/mame82/P4wnP1_aloa/releases" target="_blank" rel="noopener">releases</a>。由于软件尚处于开发初期，国内外资料较少，本篇基于笔者的实践对P4wnP1_aloa进行介绍，想要更深入的了解P4wnP1_aloa可以阅读官方README<a href="https://github.com/mame82/P4wnP1_aloa/blob/master/README.md" target="_blank" rel="noopener">链接</a>,笔者也是主要根据README对其操作进行的学习。<br>
+          
+      
+      
+    </p></blockquote></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LTF/">LTF</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BadUSB/">BadUSB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HID攻击/">HID攻击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-shell-script-notes" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -802,71 +868,6 @@
       
         <p class="article-more-link">
           <a href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/" class="article-date">
-      <time datetime="2018-01-29T12:18:54.000Z" itemprop="datePublished">2018-01-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>之前一直用开源的virtual box，但因为使用kali时有诸多不便，总算下决心装了VMware workstation14，结果kali开机黑屏，网上虽然有解决方案，但不想再麻烦了。刚好有VMware Workstation Pro 12的安装包，就试了一下，效果出奇的好（或许是笔记本有16G内存的缘故吧），简单记录下安装流程，以供将来参考。<br>
-          
-      
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/environments/">environments</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
