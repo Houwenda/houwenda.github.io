@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Python基础 | 漏断&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为南京理工大学网络安全爱好者协会寒假集训写的Python入门材料">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础">
+<meta property="og:url" content="http://houwenda.github.io/2019/03/10/python-basics/index.html">
+<meta property="og:site_name" content="漏断&#39;s Blog">
+<meta property="og:description" content="为南京理工大学网络安全爱好者协会寒假集训写的Python入门材料">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-10T15:31:26.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础">
+<meta name="twitter:description" content="为南京理工大学网络安全爱好者协会寒假集训写的Python入门材料">
+  
+    <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">漏断</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 13.33px;">速查备忘</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ltfnjust.club/">LTF</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://104.224.167.8/dokuwiki/doku.php?id=start">TP0t</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xlor.cn">XLor</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://einsturing.top/">Einsturing</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Web狗一枚，现就读南京理工大学，安全爱好者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">漏断</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">漏断</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-python-basics" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/10/python-basics/" class="article-date">
+      <time datetime="2019-03-10T15:31:43.000Z" itemprop="datePublished">2019-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python基础
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LTF/">LTF</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>为南京理工大学网络安全爱好者协会寒假集训写的Python入门材料</p>
+<a id="more"></a>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#pythonchallenge题解">pythonchallenge题解</a><ul>
+<li><a href="#level0">level0</a></li>
+<li><a href="#level1">level1</a></li>
+<li><a href="#level2">level2</a></li>
+<li><a href="#level3">level3</a></li>
+<li><a href="#level4">level4</a></li>
+<li><a href="#level5">level5</a></li>
+<li><a href="#level6">level6</a></li>
+<li><a href="#level7">level7</a></li>
+<li><a href="#level8">level8</a></li>
+<li><a href="#level9">level9</a></li>
+<li><a href="#level10">level10</a></li>
+</ul>
+</li>
+<li><a href="#常用库">常用库</a><ul>
+<li><a href="#requests">requests</a></li>
+<li><a href="#pwntools">pwntools</a></li>
+<li><a href="#OpenCV-Pillow">OpenCV Pillow</a> </li>
+<li><a href="#PyAutoGui">PyAutoGui</a></li>
+</ul>
+</li>
+<li><a href="#资料">资料</a></li>
+</ul>
+<hr>
+<h1 id="pythonchallenge题解"><a href="#pythonchallenge题解" class="headerlink" title="pythonchallenge题解"></a>pythonchallenge题解</h1><p>这里提供的示例代码由笔者编写，涉及的高级特性较少。</p>
+<p>每题都存在多种解法，可参考官方题解（解题后可获得阅读权限）。</p>
+<h2 id="level0"><a href="#level0" class="headerlink" title="level0"></a>level0</h2><p><a href="http://www.pythonchallenge.com/pc/def/0.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level0:Main_Page&amp;oldid=468449" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>计算2的38次方</li>
+<li>直接在交互模式进行计算</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pow(<span class="number">2</span>,<span class="number">38</span>)</span><br><span class="line"><span class="number">274877906944L</span></span><br></pre></td></tr></table></figure>
+<h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><p><a href="http://www.pythonchallenge.com/pc/def/map.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level1:Main_Page&amp;oldid=599916" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>整段话在英文字母范围内进行一次 rot2 运算，即可得到明文</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- conding: utf-8 -*-</span></span><br><span class="line">raw = <span class="string">"g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."</span></span><br><span class="line">print(raw + <span class="string">'\n'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rot2</span><span class="params">(raw)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> raw:</span><br><span class="line">        <span class="keyword">if</span> ord(ch) <span class="keyword">in</span> range(ord(<span class="string">'a'</span>),ord(<span class="string">'z'</span>)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">'y'</span>:</span><br><span class="line">                print(<span class="string">'a'</span>, end = <span class="string">''</span>)</span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">'z'</span>:</span><br><span class="line">                print(<span class="string">'b'</span>, end = <span class="string">''</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(chr(ord(ch)+<span class="number">2</span>), end = <span class="string">''</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(ch, end = <span class="string">''</span>)</span><br><span class="line">rot2(raw)</span><br><span class="line">print(<span class="string">'\n'</span>)</span><br><span class="line">rot2(<span class="string">'map'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><p><a href="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level2:Main_Page&amp;oldid=743208" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>右键源码，发现提示和一堆符号</li>
+<li>提示查找少见的字符</li>
+<li>脚本统计</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'ocr.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment">#print(f.read())</span></span><br><span class="line">    characters = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> f.read():</span><br><span class="line">        <span class="keyword">if</span> ch <span class="keyword">in</span> characters:</span><br><span class="line">            characters[ch] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            characters[ch] = <span class="number">1</span></span><br><span class="line">    print(sorted(characters.items(), key=<span class="keyword">lambda</span> i:i[<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'ocr.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment">#print(f.read())</span></span><br><span class="line">    characters = []</span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> f.read():</span><br><span class="line">        <span class="keyword">if</span> ch <span class="keyword">in</span> characters:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            characters.append(ch)</span><br><span class="line">    <span class="comment">#print(characters)</span></span><br><span class="line">    print(reduce(<span class="keyword">lambda</span> x,y:x+y, characters))</span><br></pre></td></tr></table></figure></p>
+<h2 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h2><p><a href="http://www.pythonchallenge.com/pc/def/equality.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level3:Main_Page&amp;oldid=743225" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>提示小写字母左右两侧都满足有且仅有三个大写字母与之相邻</li>
+<li>右键源码看到乱码，保存到文件</li>
+<li>遍历或正则匹配</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> re </span><br><span class="line"><span class="comment"># 正则</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">judge_line2</span><span class="params">(line)</span>:</span></span><br><span class="line">    result = (re.compile(<span class="string">r'[a-z]+[A-Z]&#123;3&#125;[a-z]&#123;1&#125;[A-Z]&#123;3&#125;[a-z]+?'</span>)).findall(line) <span class="comment">#懒惰匹配</span></span><br><span class="line">    <span class="keyword">if</span> result != []:</span><br><span class="line">        print(result[<span class="number">0</span>][<span class="number">-5</span>:<span class="number">-4</span>], end = <span class="string">''</span>)</span><br><span class="line"><span class="comment"># 遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">judge_line</span><span class="params">(line)</span>:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(line)<span class="number">-9</span>:</span><br><span class="line">        cut = line[i:i+<span class="number">9</span>]</span><br><span class="line">        flag = <span class="keyword">False</span> <span class="comment">#</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ord(cut[<span class="number">0</span>]) <span class="keyword">in</span> range(ord(<span class="string">'a'</span>),ord(<span class="string">'z'</span>)+<span class="number">1</span>):</span><br><span class="line">            flag = <span class="keyword">True</span> <span class="comment">#不符合</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ord(cut[<span class="number">4</span>]) <span class="keyword">in</span> range(ord(<span class="string">'a'</span>),ord(<span class="string">'z'</span>)+<span class="number">1</span>):</span><br><span class="line">            flag = <span class="keyword">True</span> </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ord(cut[<span class="number">8</span>]) <span class="keyword">in</span> range(ord(<span class="string">'a'</span>),ord(<span class="string">'z'</span>)+<span class="number">1</span>):</span><br><span class="line">            flag = <span class="keyword">True</span> </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ord(cut[j]) <span class="keyword">in</span> range(ord(<span class="string">'A'</span>),ord(<span class="string">'Z'</span>)+<span class="number">1</span>):</span><br><span class="line">                flag = <span class="keyword">True</span> </span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>,<span class="number">8</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ord(cut[j]) <span class="keyword">in</span> range(ord(<span class="string">'A'</span>),ord(<span class="string">'Z'</span>)+<span class="number">1</span>):</span><br><span class="line">                flag = <span class="keyword">True</span> </span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> flag: <span class="comment">#符合</span></span><br><span class="line">            <span class="comment">#print(cut)</span></span><br><span class="line">            print(cut[<span class="number">4</span>], end = <span class="string">''</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">            <span class="comment">#print(cut[3] + '不符合')</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'equality.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> lines <span class="keyword">in</span> f.readlines():</span><br><span class="line">            judge_line(lines)</span><br><span class="line">        print(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'equality.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> lines <span class="keyword">in</span> f.readlines():</span><br><span class="line">            judge_line2(lines)</span><br></pre></td></tr></table></figure></p>
+<h2 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h2><p><a href="http://www.pythonchallenge.com/pc/def/linkedlist.php" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level4:Main_Page&amp;oldid=660599" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>GET方法传入一个nothing，返回下一个nothing值</li>
+<li>写脚本自动提取、发送</li>
+<li>请求频率过高会导致中断</li>
+<li>中途出现了pattern变化，手动访问解决</li>
+</ul>
+<p>实例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests,re,time,sys</span><br><span class="line">number = <span class="number">55205</span></span><br><span class="line">number = sys.argv[<span class="number">1</span>] <span class="comment"># 从传入值开始访问</span></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">400</span>):</span><br><span class="line">    r = requests.get(<span class="string">'http://www.pythonchallenge.com/pc/def/linkedlist.php'</span>, params = &#123;<span class="string">'nothing'</span>: number&#125;)</span><br><span class="line">    <span class="comment">#print(r.url)</span></span><br><span class="line">    <span class="comment">#print(r.text)</span></span><br><span class="line">    resultStr = (re.compile(<span class="string">'and the next nothing is [0-9]+'</span>)).findall(r.text)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> resultStr == r.text:</span><br><span class="line">        print(resultStr)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'pattern changed'</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    number = resultStr[<span class="number">24</span>:]</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h2><p><a href="http://www.pythonchallenge.com/pc/def/peak.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level5:Main_Page&amp;oldid=509419" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>右键源码发现 banner.p ，下载下来，发现是乱码</li>
+<li>python序列化得到的二进制文件</li>
+<li>反序列化，发现是字符和出现次数</li>
+<li>依次按次数打印字符</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'banner.p'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    r = pickle.load(f)</span><br><span class="line">    <span class="comment">#print(r)</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> r:</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> line:</span><br><span class="line">            <span class="keyword">for</span> count <span class="keyword">in</span> range(t[<span class="number">1</span>]):</span><br><span class="line">                print(t[<span class="number">0</span>], end = <span class="string">''</span>)</span><br><span class="line">        print(<span class="string">''</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h2><p><a href="http://www.pythonchallenge.com/pc/def/channel.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level6:Main_Page&amp;oldid=468721" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>右键源码，发现zip，修改URL下载channel.zip文件</li>
+<li>压缩文件里有很多数字命名的txt文档，文档中是下一个文档的名称</li>
+<li>脚本提取、遍历</li>
+<li>得到提示，提取压缩文件的注释</li>
+<li>脚本遍历、输出</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> re, zipfile</span><br><span class="line">nothing = <span class="number">90052</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    f0 = zipfile.ZipFile(<span class="string">'channel.zip'</span>, <span class="string">'r'</span>)</span><br><span class="line">    print((f0.getinfo(str(nothing) + <span class="string">'.txt'</span>).comment).decode(), end = <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./channel/'</span> + str(nothing) + <span class="string">'.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="comment">#print(f.read())</span></span><br><span class="line">        nothing = (re.compile(<span class="string">'Next nothing is [0-9]+'</span>)).findall(f.read())[<span class="number">0</span>][<span class="number">16</span>:]</span><br><span class="line">        <span class="comment">#print(nothing)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h2><p><a href="http://www.pythonchallenge.com/pc/def/oxygen.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level7:Main_Page&amp;oldid=298871" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>图片中的横条由7*9的小方块排成一行组成</li>
+<li>提取每个方块的rgb值，转换成字符输出</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># 笔者用了多个工具对图片进行操作（没有PS），导致一些色块出现偏差</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img = Image.open(<span class="string">'oxygen.jpg'</span>)</span><br><span class="line">width, height = img.size</span><br><span class="line"><span class="comment">#print(width)</span></span><br><span class="line"><span class="comment">#print(height)</span></span><br><span class="line">pixel = img.load()</span><br><span class="line">i = <span class="number">4</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">608</span>:</span><br><span class="line">    print(chr(pixel[i,<span class="number">0</span>]), end = <span class="string">''</span>)</span><br><span class="line">    <span class="comment">#print(img.getpixel((i,0)))</span></span><br><span class="line">    i += <span class="number">7</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">''</span>)</span><br><span class="line">print(list(map(chr, [<span class="number">105</span>, <span class="number">110</span>, <span class="number">116</span>, <span class="number">101</span>, <span class="number">103</span>, <span class="number">114</span>, <span class="number">105</span>, <span class="number">116</span>, <span class="number">121</span>])))</span><br></pre></td></tr></table></figure></p>
+<h2 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h2><p><a href="http://www.pythonchallenge.com/pc/def/integrity.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level8:Main_Page&amp;oldid=2746" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>点击图片出现登录框</li>
+<li>右键源码，发现un、pw分别对应BZ开头字符串</li>
+<li>bzip解压，得到username和password</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> bz2</span><br><span class="line">un = <span class="string">b'BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084'</span></span><br><span class="line">pw = <span class="string">b'BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08'</span></span><br><span class="line">print(bz2.decompress(un))</span><br><span class="line">print(bz2.decompress(pw))</span><br></pre></td></tr></table></figure></p>
+<h2 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h2><p><a href="http://huge:file@www.pythonchallenge.com/pc/return/good.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level9:Main_Page&amp;oldid=739008" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>level8中右键源码发现有list没有用到，level9中图片上出现莫名的黑点，网页标题提示连点</li>
+<li>level9右键源码，发现两个长度不同的list，提示两个相加</li>
+<li>根据两个list分别绘图再叠加</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw,Image </span><br><span class="line">first = [<span class="number">146</span>,<span class="number">399</span>,<span class="number">163</span>,<span class="number">403</span>,<span class="number">170</span>,<span class="number">393</span>,<span class="number">169</span>,<span class="number">391</span>,<span class="number">166</span>,<span class="number">386</span>,<span class="number">170</span>,<span class="number">381</span>,<span class="number">170</span>,<span class="number">371</span>,<span class="number">170</span>,<span class="number">355</span>,<span class="number">169</span>,<span class="number">346</span>,<span class="number">167</span>,<span class="number">335</span>,<span class="number">170</span>,<span class="number">329</span>,<span class="number">170</span>,<span class="number">320</span>,<span class="number">170</span>,</span><br><span class="line"><span class="number">310</span>,<span class="number">171</span>,<span class="number">301</span>,<span class="number">173</span>,<span class="number">290</span>,<span class="number">178</span>,<span class="number">289</span>,<span class="number">182</span>,<span class="number">287</span>,<span class="number">188</span>,<span class="number">286</span>,<span class="number">190</span>,<span class="number">286</span>,<span class="number">192</span>,<span class="number">291</span>,<span class="number">194</span>,<span class="number">296</span>,<span class="number">195</span>,<span class="number">305</span>,<span class="number">194</span>,<span class="number">307</span>,<span class="number">191</span>,<span class="number">312</span>,<span class="number">190</span>,<span class="number">316</span>,</span><br><span class="line"><span class="number">190</span>,<span class="number">321</span>,<span class="number">192</span>,<span class="number">331</span>,<span class="number">193</span>,<span class="number">338</span>,<span class="number">196</span>,<span class="number">341</span>,<span class="number">197</span>,<span class="number">346</span>,<span class="number">199</span>,<span class="number">352</span>,<span class="number">198</span>,<span class="number">360</span>,<span class="number">197</span>,<span class="number">366</span>,<span class="number">197</span>,<span class="number">373</span>,<span class="number">196</span>,<span class="number">380</span>,<span class="number">197</span>,<span class="number">383</span>,<span class="number">196</span>,<span class="number">387</span>,<span class="number">192</span>,</span><br><span class="line"><span class="number">389</span>,<span class="number">191</span>,<span class="number">392</span>,<span class="number">190</span>,<span class="number">396</span>,<span class="number">189</span>,<span class="number">400</span>,<span class="number">194</span>,<span class="number">401</span>,<span class="number">201</span>,<span class="number">402</span>,<span class="number">208</span>,<span class="number">403</span>,<span class="number">213</span>,<span class="number">402</span>,<span class="number">216</span>,<span class="number">401</span>,<span class="number">219</span>,<span class="number">397</span>,<span class="number">219</span>,<span class="number">393</span>,<span class="number">216</span>,<span class="number">390</span>,<span class="number">215</span>,<span class="number">385</span>,</span><br><span class="line"><span class="number">215</span>,<span class="number">379</span>,<span class="number">213</span>,<span class="number">373</span>,<span class="number">213</span>,<span class="number">365</span>,<span class="number">212</span>,<span class="number">360</span>,<span class="number">210</span>,<span class="number">353</span>,<span class="number">210</span>,<span class="number">347</span>,<span class="number">212</span>,<span class="number">338</span>,<span class="number">213</span>,<span class="number">329</span>,<span class="number">214</span>,<span class="number">319</span>,<span class="number">215</span>,<span class="number">311</span>,<span class="number">215</span>,<span class="number">306</span>,<span class="number">216</span>,<span class="number">296</span>,<span class="number">218</span>,</span><br><span class="line"><span class="number">290</span>,<span class="number">221</span>,<span class="number">283</span>,<span class="number">225</span>,<span class="number">282</span>,<span class="number">233</span>,<span class="number">284</span>,<span class="number">238</span>,<span class="number">287</span>,<span class="number">243</span>,<span class="number">290</span>,<span class="number">250</span>,<span class="number">291</span>,<span class="number">255</span>,<span class="number">294</span>,<span class="number">261</span>,<span class="number">293</span>,<span class="number">265</span>,<span class="number">291</span>,<span class="number">271</span>,<span class="number">291</span>,<span class="number">273</span>,<span class="number">289</span>,<span class="number">278</span>,<span class="number">287</span>,</span><br><span class="line"><span class="number">279</span>,<span class="number">285</span>,<span class="number">281</span>,<span class="number">280</span>,<span class="number">284</span>,<span class="number">278</span>,<span class="number">284</span>,<span class="number">276</span>,<span class="number">287</span>,<span class="number">277</span>,<span class="number">289</span>,<span class="number">283</span>,<span class="number">291</span>,<span class="number">286</span>,<span class="number">294</span>,<span class="number">291</span>,<span class="number">296</span>,<span class="number">295</span>,<span class="number">299</span>,<span class="number">300</span>,<span class="number">301</span>,<span class="number">304</span>,<span class="number">304</span>,<span class="number">320</span>,<span class="number">305</span>,</span><br><span class="line"><span class="number">327</span>,<span class="number">306</span>,<span class="number">332</span>,<span class="number">307</span>,<span class="number">341</span>,<span class="number">306</span>,<span class="number">349</span>,<span class="number">303</span>,<span class="number">354</span>,<span class="number">301</span>,<span class="number">364</span>,<span class="number">301</span>,<span class="number">371</span>,<span class="number">297</span>,<span class="number">375</span>,<span class="number">292</span>,<span class="number">384</span>,<span class="number">291</span>,<span class="number">386</span>,<span class="number">302</span>,<span class="number">393</span>,<span class="number">324</span>,<span class="number">391</span>,<span class="number">333</span>,<span class="number">387</span>,</span><br><span class="line"><span class="number">328</span>,<span class="number">375</span>,<span class="number">329</span>,<span class="number">367</span>,<span class="number">329</span>,<span class="number">353</span>,<span class="number">330</span>,<span class="number">341</span>,<span class="number">331</span>,<span class="number">328</span>,<span class="number">336</span>,<span class="number">319</span>,<span class="number">338</span>,<span class="number">310</span>,<span class="number">341</span>,<span class="number">304</span>,<span class="number">341</span>,<span class="number">285</span>,<span class="number">341</span>,<span class="number">278</span>,<span class="number">343</span>,<span class="number">269</span>,<span class="number">344</span>,<span class="number">262</span>,<span class="number">346</span>,</span><br><span class="line"><span class="number">259</span>,<span class="number">346</span>,<span class="number">251</span>,<span class="number">349</span>,<span class="number">259</span>,<span class="number">349</span>,<span class="number">264</span>,<span class="number">349</span>,<span class="number">273</span>,<span class="number">349</span>,<span class="number">280</span>,<span class="number">349</span>,<span class="number">288</span>,<span class="number">349</span>,<span class="number">295</span>,<span class="number">349</span>,<span class="number">298</span>,<span class="number">354</span>,<span class="number">293</span>,<span class="number">356</span>,<span class="number">286</span>,<span class="number">354</span>,<span class="number">279</span>,<span class="number">352</span>,<span class="number">268</span>,</span><br><span class="line"><span class="number">352</span>,<span class="number">257</span>,<span class="number">351</span>,<span class="number">249</span>,<span class="number">350</span>,<span class="number">234</span>,<span class="number">351</span>,<span class="number">211</span>,<span class="number">352</span>,<span class="number">197</span>,<span class="number">354</span>,<span class="number">185</span>,<span class="number">353</span>,<span class="number">171</span>,<span class="number">351</span>,<span class="number">154</span>,<span class="number">348</span>,<span class="number">147</span>,<span class="number">342</span>,<span class="number">137</span>,<span class="number">339</span>,<span class="number">132</span>,<span class="number">330</span>,<span class="number">122</span>,<span class="number">327</span>,</span><br><span class="line"><span class="number">120</span>,<span class="number">314</span>,<span class="number">116</span>,<span class="number">304</span>,<span class="number">117</span>,<span class="number">293</span>,<span class="number">118</span>,<span class="number">284</span>,<span class="number">118</span>,<span class="number">281</span>,<span class="number">122</span>,<span class="number">275</span>,<span class="number">128</span>,<span class="number">265</span>,<span class="number">129</span>,<span class="number">257</span>,<span class="number">131</span>,<span class="number">244</span>,<span class="number">133</span>,<span class="number">239</span>,<span class="number">134</span>,<span class="number">228</span>,<span class="number">136</span>,<span class="number">221</span>,<span class="number">137</span>,</span><br><span class="line"><span class="number">214</span>,<span class="number">138</span>,<span class="number">209</span>,<span class="number">135</span>,<span class="number">201</span>,<span class="number">132</span>,<span class="number">192</span>,<span class="number">130</span>,<span class="number">184</span>,<span class="number">131</span>,<span class="number">175</span>,<span class="number">129</span>,<span class="number">170</span>,<span class="number">131</span>,<span class="number">159</span>,<span class="number">134</span>,<span class="number">157</span>,<span class="number">134</span>,<span class="number">160</span>,<span class="number">130</span>,<span class="number">170</span>,<span class="number">125</span>,<span class="number">176</span>,<span class="number">114</span>,<span class="number">176</span>,</span><br><span class="line"><span class="number">102</span>,<span class="number">173</span>,<span class="number">103</span>,<span class="number">172</span>,<span class="number">108</span>,<span class="number">171</span>,<span class="number">111</span>,<span class="number">163</span>,<span class="number">115</span>,<span class="number">156</span>,<span class="number">116</span>,<span class="number">149</span>,<span class="number">117</span>,<span class="number">142</span>,<span class="number">116</span>,<span class="number">136</span>,<span class="number">115</span>,<span class="number">129</span>,<span class="number">115</span>,<span class="number">124</span>,<span class="number">115</span>,<span class="number">120</span>,<span class="number">115</span>,<span class="number">115</span>,<span class="number">117</span>,</span><br><span class="line"><span class="number">113</span>,<span class="number">120</span>,<span class="number">109</span>,<span class="number">122</span>,<span class="number">102</span>,<span class="number">122</span>,<span class="number">100</span>,<span class="number">121</span>,<span class="number">95</span>,<span class="number">121</span>,<span class="number">89</span>,<span class="number">115</span>,<span class="number">87</span>,<span class="number">110</span>,<span class="number">82</span>,<span class="number">109</span>,<span class="number">84</span>,<span class="number">118</span>,<span class="number">89</span>,<span class="number">123</span>,<span class="number">93</span>,<span class="number">129</span>,<span class="number">100</span>,<span class="number">130</span>,<span class="number">108</span>,<span class="number">132</span>,<span class="number">110</span>,</span><br><span class="line"><span class="number">133</span>,<span class="number">110</span>,<span class="number">136</span>,<span class="number">107</span>,<span class="number">138</span>,<span class="number">105</span>,<span class="number">140</span>,<span class="number">95</span>,<span class="number">138</span>,<span class="number">86</span>,<span class="number">141</span>,<span class="number">79</span>,<span class="number">149</span>,<span class="number">77</span>,<span class="number">155</span>,<span class="number">81</span>,<span class="number">162</span>,<span class="number">90</span>,<span class="number">165</span>,<span class="number">97</span>,<span class="number">167</span>,<span class="number">99</span>,<span class="number">171</span>,<span class="number">109</span>,<span class="number">171</span>,<span class="number">107</span>,<span class="number">161</span>,</span><br><span class="line"><span class="number">111</span>,<span class="number">156</span>,<span class="number">113</span>,<span class="number">170</span>,<span class="number">115</span>,<span class="number">185</span>,<span class="number">118</span>,<span class="number">208</span>,<span class="number">117</span>,<span class="number">223</span>,<span class="number">121</span>,<span class="number">239</span>,<span class="number">128</span>,<span class="number">251</span>,<span class="number">133</span>,<span class="number">259</span>,<span class="number">136</span>,<span class="number">266</span>,<span class="number">139</span>,<span class="number">276</span>,<span class="number">143</span>,<span class="number">290</span>,<span class="number">148</span>,<span class="number">310</span>,<span class="number">151</span>,</span><br><span class="line"><span class="number">332</span>,<span class="number">155</span>,<span class="number">348</span>,<span class="number">156</span>,<span class="number">353</span>,<span class="number">153</span>,<span class="number">366</span>,<span class="number">149</span>,<span class="number">379</span>,<span class="number">147</span>,<span class="number">394</span>,<span class="number">146</span>,<span class="number">399</span>]</span><br><span class="line">second = [<span class="number">156</span>,<span class="number">141</span>,<span class="number">165</span>,<span class="number">135</span>,<span class="number">169</span>,<span class="number">131</span>,<span class="number">176</span>,<span class="number">130</span>,<span class="number">187</span>,<span class="number">134</span>,<span class="number">191</span>,<span class="number">140</span>,<span class="number">191</span>,<span class="number">146</span>,<span class="number">186</span>,<span class="number">150</span>,<span class="number">179</span>,<span class="number">155</span>,<span class="number">175</span>,<span class="number">157</span>,<span class="number">168</span>,<span class="number">157</span>,<span class="number">163</span>,<span class="number">157</span>,<span class="number">159</span>,</span><br><span class="line"><span class="number">157</span>,<span class="number">158</span>,<span class="number">164</span>,<span class="number">159</span>,<span class="number">175</span>,<span class="number">159</span>,<span class="number">181</span>,<span class="number">157</span>,<span class="number">191</span>,<span class="number">154</span>,<span class="number">197</span>,<span class="number">153</span>,<span class="number">205</span>,<span class="number">153</span>,<span class="number">210</span>,<span class="number">152</span>,<span class="number">212</span>,<span class="number">147</span>,<span class="number">215</span>,<span class="number">146</span>,<span class="number">218</span>,<span class="number">143</span>,<span class="number">220</span>,<span class="number">132</span>,<span class="number">220</span>,</span><br><span class="line"><span class="number">125</span>,<span class="number">217</span>,<span class="number">119</span>,<span class="number">209</span>,<span class="number">116</span>,<span class="number">196</span>,<span class="number">115</span>,<span class="number">185</span>,<span class="number">114</span>,<span class="number">172</span>,<span class="number">114</span>,<span class="number">167</span>,<span class="number">112</span>,<span class="number">161</span>,<span class="number">109</span>,<span class="number">165</span>,<span class="number">107</span>,<span class="number">170</span>,<span class="number">99</span>,<span class="number">171</span>,<span class="number">97</span>,<span class="number">167</span>,<span class="number">89</span>,<span class="number">164</span>,<span class="number">81</span>,<span class="number">162</span>,</span><br><span class="line"><span class="number">77</span>,<span class="number">155</span>,<span class="number">81</span>,<span class="number">148</span>,<span class="number">87</span>,<span class="number">140</span>,<span class="number">96</span>,<span class="number">138</span>,<span class="number">105</span>,<span class="number">141</span>,<span class="number">110</span>,<span class="number">136</span>,<span class="number">111</span>,<span class="number">126</span>,<span class="number">113</span>,<span class="number">129</span>,<span class="number">118</span>,<span class="number">117</span>,<span class="number">128</span>,<span class="number">114</span>,<span class="number">137</span>,<span class="number">115</span>,<span class="number">146</span>,<span class="number">114</span>,<span class="number">155</span>,<span class="number">115</span>,</span><br><span class="line"><span class="number">158</span>,<span class="number">121</span>,<span class="number">157</span>,<span class="number">128</span>,<span class="number">156</span>,<span class="number">134</span>,<span class="number">157</span>,<span class="number">136</span>,<span class="number">156</span>,<span class="number">136</span>]</span><br><span class="line"> </span><br><span class="line">img = Image.new(<span class="string">'RGB'</span>, (<span class="number">500</span>, <span class="number">500</span>))  </span><br><span class="line">draw = ImageDraw.Draw(img)  </span><br><span class="line">draw.line(first)  </span><br><span class="line">draw.line(second)  </span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure></p>
+<h2 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h2><p><a href="http://huge:file@www.pythonchallenge.com/pc/return/bull.html" target="_blank" rel="noopener">题目链接</a></p>
+<p><a href="http://wiki.pythonchallenge.com/index.php?title=Level10:Main_Page&amp;oldid=534272" target="_blank" rel="noopener">官方题解</a></p>
+<p>思路：</p>
+<ul>
+<li>点击牛跳转到sequence.txt，文件中是一段list，只有开头</li>
+<li>页面提示求第30个元素的长度</li>
+<li>发现规律：后一个元素由前一个元素递推得到</li>
+<li>编写脚本，遍历前一个元素，每连续x几个n，对应后一个元素中的‘xn’</li>
+<li>注意循环退出时的处理</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(former)</span>:</span></span><br><span class="line">    result = <span class="string">''</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    ch = former[<span class="number">0</span>]</span><br><span class="line">    count = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">if</span> i == len(former):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> ch == former[i]:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:  </span><br><span class="line">            result += str(count) + ch        </span><br><span class="line">            count = <span class="number">1</span></span><br><span class="line">            ch = former[i]</span><br><span class="line">            <span class="comment">#print('next:' + ch)            </span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="comment">#print('result:' + result)</span></span><br><span class="line">    result += str(count) + ch</span><br><span class="line">    <span class="comment">#print(result)</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">                </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#next('111221')</span></span><br><span class="line">    former = <span class="string">'1'</span></span><br><span class="line">    <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">30</span>):</span><br><span class="line">        former = next(former)</span><br><span class="line">        <span class="comment">#print(former) </span></span><br><span class="line">    print(len(former))</span><br></pre></td></tr></table></figure></p>
+<h1 id="常用库"><a href="#常用库" class="headerlink" title="常用库"></a>常用库</h1><h2 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h2><p>web常用，实现HTTP数据发送、接收，用于需要发送大量请求的地方，如SQL盲注、fuzz测试等</p>
+<h2 id="pwntools"><a href="#pwntools" class="headerlink" title="pwntools"></a>pwntools</h2><p>pwn常用，用于快速编写exploit</p>
+<p><a href="https://github.com/Gallopsled/pwntools" target="_blank" rel="noopener">项目地址</a></p>
+<p><a href="http://docs.pwntools.com/en/stable/" target="_blank" rel="noopener">文档地址</a></p>
+<p><a href="https://www.jianshu.com/p/355e4badab50" target="_blank" rel="noopener">中文介绍</a></p>
+<h2 id="OpenCV-Pillow"><a href="#OpenCV-Pillow" class="headerlink" title="OpenCV Pillow"></a>OpenCV Pillow</h2><p>图像库， OpenCV为计算机视觉库，常用于图像识别，Pillow用于图像处理</p>
+<h2 id="PyAutoGui"><a href="#PyAutoGui" class="headerlink" title="PyAutoGui"></a>PyAutoGui</h2><p>用于挂机测试、运维等，模拟鼠标、键盘操作</p>
+<p><a href="https://github.com/asweigart/pyautogui" target="_blank" rel="noopener">项目地址</a></p>
+<p><a href="http://blog.topspeedsnail.com/archives/5373" target="_blank" rel="noopener">中文介绍</a></p>
+<h1 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h1><ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">推荐教程</a></li>
+<li><a href="https://lose-the-flag.github.io/categories/LordCasser/" target="_blank" rel="noopener">笔记(作者:LordCasser)</a></li>
+<li><a href="http://www.pythonchallenge.com/" target="_blank" rel="noopener">pythonchallenge</a> </li>
+</ul>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/10/python-basics/">Python基础</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
+        <p><span>发布时间:</span>2019年03月10日 - 23时31分</p>
+        <p><span>最后更新:</span>2019年03月10日 - 23时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/10/python-basics/" title="Python基础">http://houwenda.github.io/2019/03/10/python-basics/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/03/10/python-basics/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何用P4wnP1_aloa进行HID攻击</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pythonchallenge题解"><span class="toc-number">2.</span> <span class="toc-text">pythonchallenge题解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#level0"><span class="toc-number">2.1.</span> <span class="toc-text">level0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level1"><span class="toc-number">2.2.</span> <span class="toc-text">level1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level2"><span class="toc-number">2.3.</span> <span class="toc-text">level2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level3"><span class="toc-number">2.4.</span> <span class="toc-text">level3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level4"><span class="toc-number">2.5.</span> <span class="toc-text">level4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level5"><span class="toc-number">2.6.</span> <span class="toc-text">level5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level6"><span class="toc-number">2.7.</span> <span class="toc-text">level6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level7"><span class="toc-number">2.8.</span> <span class="toc-text">level7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level8"><span class="toc-number">2.9.</span> <span class="toc-text">level8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level9"><span class="toc-number">2.10.</span> <span class="toc-text">level9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level10"><span class="toc-number">2.11.</span> <span class="toc-text">level10</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用库"><span class="toc-number">3.</span> <span class="toc-text">常用库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#requests"><span class="toc-number">3.1.</span> <span class="toc-text">requests</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pwntools"><span class="toc-number">3.2.</span> <span class="toc-text">pwntools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCV-Pillow"><span class="toc-number">3.3.</span> <span class="toc-text">OpenCV Pillow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyAutoGui"><span class="toc-number">3.4.</span> <span class="toc-text">PyAutoGui</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资料"><span class="toc-number">4.</span> <span class="toc-text">资料</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/" title="下一篇: 如何用P4wnP1_aloa进行HID攻击">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 漏断
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">总浏览量: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-" + backgroundnum +".jpg)";
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
