@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack7.png">
 <meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack6.png">
 <meta property="og:image" content="https://github.com/Houwenda/houwenda.github.io/raw/master/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/pics/attack9.png">
-<meta property="og:updated_time" content="2019-01-22T07:14:54.027Z">
+<meta property="og:updated_time" content="2019-04-22T14:55:51.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何用P4wnP1_aloa进行HID攻击">
 <meta name="twitter:description" content="前言 P4wnP1基于树莓派zero (w)，是一个快捷高效的HID攻击平台，可以进行Windows密码破解、HID隐藏信道后门、模块化USB设备模拟等，于2017年2月第一次发布，现在主要开发者已停止对其开发，全力开发它的升级版——P4wnP1_aloa。P4wnP1_aloa也是基于树莓派zero w，与P4wnP1善于高效攻击相比，P4wnP1_aloa更注重HID测试，提供web客户端，调">
@@ -166,7 +166,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 13.33px;">速查备忘</a>
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 13.33px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 13.33px;">题解</a>
                     </div>
                 </section>
                 
@@ -340,7 +340,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@kali:/sys/kernel/config/usb_gadget/mame82_gadget# cd /dev</span><br><span class="line"></span><br><span class="line">root@kali:/dev# file /dev/hidg0</span><br><span class="line">/dev/hidg0: character special (243/0)</span><br><span class="line"></span><br><span class="line">root@kali:/dev#</span><br></pre></td></tr></table></figure>
 <p>将树莓派上标有USB的USB接口连接到电脑，将光标置于一个可输入文本的地方（比如记事本，如果连接的是用来ssh连接的电脑可以忽略）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@kali:/dev# echo -ne &quot;\x00\x00\x00\x17\x00\x00\x00\x00&quot; &gt; /dev/hidg0</span><br><span class="line"># echo -n 不自动换行</span><br><span class="line"># echo -e 开启转义</span><br></pre></td></tr></table></figure></p>
 <p>如果不停的输出一大堆t则测试成功（断开USB连接后停止），但是只键入了一个keycode，为什么会不停输出呢？这是因为只输入了按下按键的信号，却没有弹起按键的信号，这就相当于按住键盘的T键不放，直到拔下键盘。</p>
-<p>已知弹起键盘的KeyCode为”\x00\x00\x00\x00\x00\x00\x00\x00”，则可以通过写一个shell脚本进行测试<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">sleep 3</span><br><span class="line">for keycode in &#123;10..25&#125;</span><br><span class="line">do</span><br><span class="line">	echo -ne "\x00\x00\x00\x$&#123;keycode&#125;\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">       	echo -ne "\x00\x00\x00\x00\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">	sleep 0.2</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>已知弹起键盘的KeyCode为”\x00\x00\x00\x00\x00\x00\x00\x00”，则可以通过写一个shell脚本进行测试<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">sleep 3</span><br><span class="line">for keycode in &#123;10..25&#125;</span><br><span class="line">do</span><br><span class="line">	echo -ne "\x00\x00\x00\x$&#123;keycode&#125;\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">       	echo -ne "\x00\x00\x00\x00\x00\x00\x00\x00" &gt; /dev/hidg0</span><br><span class="line">	sleep 0.2</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
 <p>上面的脚本实现的效果：等待3秒后依次按下mnopqrstuv345678，按键间隔0.2秒。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# chmod +x test.sh</span><br><span class="line">root@kali:~# ./test.sh</span><br><span class="line">mnopqrstuv345678root@kali:~# mnopqrstuv345678</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="场景1"><a href="#场景1" class="headerlink" title="场景1"></a>场景1</h3><p>同一局域网内（外网也行）控制目标电脑。</p>
@@ -419,7 +419,7 @@
         <p><span>本文标题:</span><a href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
         <p><span>发布时间:</span>2019年01月22日 - 08时45分</p>
-        <p><span>最后更新:</span>2019年01月22日 - 15时14分</p>
+        <p><span>最后更新:</span>2019年04月22日 - 22时55分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/" title="如何用P4wnP1_aloa进行HID攻击">http://houwenda.github.io/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/</a>
             <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -435,11 +435,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/03/10/python-basics/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/03/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Python基础
+          Hello World
         
       </div>
     </a>
@@ -506,7 +506,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/03/10/python-basics/" title="上一篇: Python基础">
+            <a href="/2019/03/03/hello-world/" title="上一篇: Hello World">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -517,7 +517,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
