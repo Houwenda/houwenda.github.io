@@ -5,18 +5,18 @@
   
   <title>NUSTCTF2019出题笔记 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言//TODO">
+  <meta name="description" content="前言&amp;#160; &amp;#160; &amp;#160; &amp;#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题">
 <meta name="keywords" content="出题笔记,题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NUSTCTF2019出题笔记">
 <meta property="og:url" content="http://houwenda.github.io/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
-<meta property="og:description" content="前言//TODO">
+<meta property="og:description" content="前言&amp;#160; &amp;#160; &amp;#160; &amp;#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T15:02:25.657Z">
+<meta property="og:updated_time" content="2019-04-24T06:03:41.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NUSTCTF2019出题笔记">
-<meta name="twitter:description" content="前言//TODO">
+<meta name="twitter:description" content="前言&amp;#160; &amp;#160; &amp;#160; &amp;#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -266,13 +266,37 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>//TODO</p>
-<a id="more"></a>
-<h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect"></a>sendRedirect</h1><p>//TODO</p>
-<h1 id="put-your-hands-up"><a href="#put-your-hands-up" class="headerlink" title="put your hands up"></a>put your hands up</h1><p>//TODO</p>
-<h1 id="JavaEE"><a href="#JavaEE" class="headerlink" title="JavaEE"></a>JavaEE</h1><p>//TODO</p>
-<h1 id="net-disk-amp-net-disk-Revenge"><a href="#net-disk-amp-net-disk-Revenge" class="headerlink" title="net-disk &amp; net-disk Revenge"></a>net-disk &amp; net-disk Revenge</h1><p>//TODO</p>
-<h1 id="disgu"><a href="#disgu" class="headerlink" title="disgu"></a>disgu</h1><p>//TODO</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&#160; &#160; &#160; &#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题过程、收获。<br><a id="more"></a></p>
+<h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect"></a>sendRedirect</h1><p>&#160; &#160; &#160; &#160;得知Web缺少简单题，花20分钟出了一道，PHP返回一个302跳转，同时header里藏了flag，flag经过base58编码，需要熟悉base且知道base58才能解。很多选手猜不出，给了hint。</p>
+<h1 id="put-your-hands-up"><a href="#put-your-hands-up" class="headerlink" title="put your hands up"></a>put your hands up</h1><p>&#160; &#160; &#160; &#160;SUCTF2018招新赛时出的题，修改美化了前端（Azurity）,那场比赛中给了hint仍然很少有人做出，脑洞较大。</p>
+<p>&#160; &#160; &#160; &#160;为了降低难度在前端HTML源码里放了Tomcat的PUT方法传shell漏洞的CVE号，并在题目名字里提示了put，有选手直接照cve复现，当然无法成功。</p>
+<p>&#160; &#160; &#160; &#160;后端逻辑：每个用户在第一次访问时获得session，index.php为每个session创建一个HTML文件，用户可以在index.php的输入框中写入前端代码，但PHP代码被严格过滤掉了。当用户带cookie再次访问index.php时，后端对HTML代码进行了一次包含。</p>
+<p>&#160; &#160; &#160; &#160;环境部署：配置环境时主要是在nginx中开启了webdav模块，配置html文件目录可以使用PUT方法。</p>
+<p>&#160; &#160; &#160; &#160;PUT方法在restful api中常用于更新远程文件，这里模拟的是一个支持PUT方法的PHP应用，因缺少相关过滤，且使用了文件包含，导致任意代码执行的过程。</p>
+<p>&#160; &#160; &#160; &#160;webdav与restful api有差异，但都是通过多种HTTP方法实现功能。nginx有此模块，需要手动开启，并配置支持此功能的目录权限。</p>
+<h1 id="JavaEE"><a href="#JavaEE" class="headerlink" title="JavaEE"></a>JavaEE</h1><p>&#160; &#160; &#160; &#160;Lord Casser师傅黑盒测试学院的moodle课程管理平台，发现了消息功能中的XSS漏洞，但在本地复现过程中遇到问题。此moodle的lib/upgrade.txt文件提示版本为3.5，但在复现时并未成功。我将moodle3.1到3.5各主要版本的docker镜像放到本地测试，发现学院的moodle外观与3.1版本类似，而3.1版本根本不具备聊天功能。向老师要到了源码，打开一看竟然是Windows便携版，看起来就是学生做的项目。</p>
+<p>&#160; &#160; &#160; &#160;源码审计发现，在lib目录下的weblib.php文件中的is_purify_html_necessary函数被作者手动修改（还写了注释，显示修改于2017年6月27日，修改者姓名拼音就不放出来了），凡遇到img标签一律放过，不经过过滤函数处理，直接显示到前端页面。借机出了这道题，尽量还原平台的真实外观，对无漏洞的PHP文件进行了手动修改，构造出相同的XSS漏洞。mio师傅用selenium为本题写了Bot自动触发xss。为了给足提示，用目标管理员账号给每个参赛账号发了一个带XSS弹窗的消息，选手访问消息界面就会触发。其实这时选手只要F12看一下源码就能发现XSS使用的payload，最终没人做出本题。</p>
+<p>&#160; &#160; &#160; &#160;题解:通过window.open等将sessionid发送到远程服务器，接收到cookie后即可以管理员账号登录，flag就放在日程中，一目了然。</p>
+<p>&#160; &#160; &#160; &#160;本环境包含主应用和数据库，使用docker-compose进行的部署。selenium使用Chrome特性时，Linux上需要安装Chrome或chromium（apt库中就有）。</p>
+<h1 id="net-disk-amp-net-disk-Revenge"><a href="#net-disk-amp-net-disk-Revenge" class="headerlink" title="net-disk &amp; net-disk Revenge"></a>net-disk &amp; net-disk Revenge</h1><p>&#160; &#160; &#160; &#160;Azurity师傅提到要出nodejs的cve，当时刚好在考虑出SSRF打内网Redis服务器的题，且已经用node写了一个后端出来，就顺利进行了整合。</p>
+<p>&#160; &#160; &#160; &#160;通过node的任意文件读取漏洞给选手足够信息，包括内网拓扑、Redis服务器密码本，其中内网拓扑写入到/etc/hosts文件中（docker-compose和docker的–link参数有所不同，使用compose时内网主机默认通过dns解析，–link则动态向容器中写入hosts文件，出题时使用的是docker-compose,因此手动对内网信息进行了写入）。</p>
+<p>&#160; &#160; &#160; &#160;Azurity师傅写了前端，把Redis作为一个计数器，并对后端进行了调整，设计了一个网盘应用，SSRF包含在离线下载功能中，并将报错信息全部回显。</p>
+<p>&#160; &#160; &#160; &#160;为了避免选手向服务器离线下载其他文件，减少后端工作量，离线下载仅设计了一个验证功能，若用curl成功访问用户提交的网址则返回通用的‘功能未开启’页面，若校验失败则将错误信息返回给用户。</p>
+<p>&#160; &#160; &#160; &#160;使用node的child_process模块child_process.execFile实现对命令注入的防护，但没有考虑到curl的-K参数可以读取本地文件作为config文件，一叶飘零师傅在未给出cve提示的情况下直接用curl读出了flag。flag文件中包含一行hint，以’hint:’开头，冒号导致curl无法继续向后读取，拿不到redis的密码本。</p>
+<p>&#160; &#160; &#160; &#160;<code>curl -K 文件名</code>将文件当做配置文件读取，可用于构造复杂HTTP请求，在不符合格式的情况下将返回解析报错。虽然防命令注入时对空格进行了防护，但是<code>-K 文件名</code>中间的空格可以省略，依然可以通过这一方法读取文件，即<code>curl -K/flag</code>。<code>curl file:///etc/passwd</code>可以通过file协议读取本地文件，但本题设计不将访问结果回显，curl也不能将内容带出，不构成威胁。</p>
+<p>&#160; &#160; &#160; &#160;本来还要防止选手利用node漏洞读取到本题的node脚本（redis密码硬编码在脚本中），打算用<code>curl | sh</code>的方法直接将脚本读入内存执行，不过经过测试发现其他文件可以正常读取，只有脚本本身无法读取。</p>
+<p>&#160; &#160; &#160; &#160;docker中cron服务默认不启动，需手动开启。<code>crontab -e</code>在编辑完成退出时会对语法进行检查，但通过Redis直接写入cron文件时不会，且cron能够执行语法正确的行。</p>
+<p>&#160; &#160; &#160; &#160;尝试Ubuntu以普通用户启动Redis，提示无法读取配置文件（更改权限未解决），用官方镜像启动成功，但普通用户无权写入cron。Ubuntu无法弹出shell，改sh的软链接也没有解决，最后使用了centos，root执行Redis。</p>
+<p>&#160; &#160; &#160; &#160;如果将Redis端口暴露给外网，可直接用msf的模块进行爆破。通过SSRF攻击时就算没有回显也可以盲攻击，若权限配置符合利用条件，Redis服务器将在爆破出正确密码后反弹shell。</p>
+<p>&#160; &#160; &#160; &#160;SSRF打Redis这一套路早有人用，百度一堆payload，没有什么考察的意义，但是打带密码的Redis的题目还没怎么听过（gopher在构造Redis传输协议时也可以构造授权流量），于是就拿来出了一道题，curl通过-m参数设置超时时间为10秒，因此在考察选手对Redis协议了解的同时也考察了Python多线程爆破脚本的编写。<br>题目难度过高，比赛时间短，无人做出。</p>
+<h1 id="disgu"><a href="#disgu" class="headerlink" title="disgu"></a>disgu</h1><p>&#160; &#160; &#160; &#160;灵感来源于国外的b00t2root19比赛中的一道linux题，本题考察suid和sgid导致的越权，同时包含对常用命令不常用方法的考察。</p>
+<p>&#160; &#160; &#160; &#160;开始时想用alpine镜像进行题目环境的构建，发现alpine使用busybox提供Linux命令功能，难以配置，因此转而用了ubuntu镜像。</p>
+<p>&#160; &#160; &#160; &#160;在docker容器中使用<code>chattr +a</code>会导致容器无法删除。因为容器的文件目录是挂在到主机var目录下的，在容器里进行文件读写的限制会对本机文件产生影响。同时，在容器中对目录进行chattr或lsattr操作都会导致ioctl错误。</p>
+<p>&#160; &#160; &#160; &#160;当sgid文件运行时，gid改变，但是uid未发生变化，导致无权限用户对越权创建的文件具有修改能力。这意味着第一个人通过越权写入文件得到flag后，其他人只要修改文件即可，无需越权创建。解决方法是在设定sgid的同时设定suid，使越权创建的文件所有者为高权限用户。</p>
+<p>make的–eval参数可用于执行命令、写入文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -s --eval=$'x:\n\t-'"命令"</span><br></pre></td></tr></table></figure></p>
+<p>写入文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -s --eval="\$(file &gt;文件名,字符串)" .</span><br></pre></td></tr></table></figure></p>
+<p>base32用于读取文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base32 文件名 | base32 --docode</span><br></pre></td></tr></table></figure></p>
+<p>Linux下全盘查找suid和sgid文件的方法<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -g=s -type f 2&gt;/dev/null</span><br><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure></p>
 
       
       
@@ -331,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
         <p><span>发布时间:</span>2019年04月22日 - 00时34分</p>
-        <p><span>最后更新:</span>2019年04月22日 - 23时02分</p>
+        <p><span>最后更新:</span>2019年04月24日 - 14时03分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/" title="NUSTCTF2019出题笔记">http://houwenda.github.io/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/</a>
             <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
