@@ -3,19 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>师傅们的blogs | 漏断&#39;s Blog</title>
+  <title>docker整理 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="收集CTF师傅们的博客">
+  <meta name="description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
+<meta name="keywords" content="docker,速查备忘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="师傅们的blogs">
-<meta property="og:url" content="http://houwenda.github.io/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/index.html">
+<meta property="og:title" content="docker整理">
+<meta property="og:url" content="http://houwenda.github.io/2019/06/29/docker整理/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
-<meta property="og:description" content="收集CTF师傅们的博客">
+<meta property="og:description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-26T16:21:29.228Z">
+<meta property="og:updated_time" content="2019-06-29T07:16:35.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="师傅们的blogs">
-<meta name="twitter:description" content="收集CTF师傅们的博客">
+<meta name="twitter:title" content="docker整理">
+<meta name="twitter:description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -225,11 +226,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-docker整理" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" class="article-date">
-      <time datetime="2018-03-20T15:33:22.000Z" itemprop="datePublished">2018-03-20</time>
+      <a href="/2019/06/29/docker整理/" class="article-date">
+      <time datetime="2019-06-29T04:35:44.000Z" itemprop="datePublished">2019-06-29</time>
 </a>
     </div>
   
@@ -240,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      师傅们的blogs
+      docker整理
     </h1>
   
 
@@ -249,11 +250,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a>
+    <a class="article-category-link" href="/categories/LTF/">LTF</a><a class="article-category-link" href="/categories/LTF/开发/">开发</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查备忘/">速查备忘</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -261,7 +266,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>收集CTF师傅们的博客<br><a id="more"></a><br><a href="https://yuwenjie.cc/2018-NUSTCTF2018.html" target="_blank" rel="noopener">https://yuwenjie.cc/2018-NUSTCTF2018.html</a> <a href="http://hackermio.me/" target="_blank" rel="noopener">http://hackermio.me/</a> <a href="http://mozhucy.cn/" target="_blank" rel="noopener">http://mozhucy.cn/</a> <a href="https://gitee.com/W8Cloud/CTF_learning" target="_blank" rel="noopener">https://gitee.com/W8Cloud/CTF_learning</a> <a href="https://github.com/inory009/Open-Source-Project-Learning" target="_blank" rel="noopener">https://github.com/inory009/Open-Source-Project-Learning</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。<br><a id="more"></a></p>
+</blockquote>
+<h1 id="docker指令"><a href="#docker指令" class="headerlink" title="docker指令"></a>docker指令</h1><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p><code>docker search 镜像名</code> 在dockerhub查找镜像<br><code>docker pull 镜像名</code> 下载镜像<br><code>docker rmi 镜像名</code> 删除镜像<br><code>docker images</code> 查看本地镜像<br><code>docker build -t 镜像名:标签 -f Dockerfile文件路径 .</code> 构建镜像</p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p><code>docker run 镜像名</code> 创建容器，执行默认操作<br><code>docker run -it -p 主机端口号:容器端口号 镜像名 /bin/bash</code> 创建容器，进入shell<br><code>docker run -d 镜像名</code> 后台创建容器，执行默认操作<br><code>docker exec -it 容器名 /bin/bash</code> 进入正在运行容器的shell<br><code>docker stop 容器名</code> 停止容器<br><code>docker start 容器名</code> 启动容器<br><code>docker ps [-a]</code> 查看已有容器<br><code>docker rm [-f] 容器名</code> 删除容器<br><code>docker commit 容器名 镜像名</code>  将容器提交保存为镜像<br><code>docker cp &lt;主机目录 容器:目录&gt;(&lt;容器:目录 主机目录&gt;)</code> 容器与主机间文件操作</p>
+<h1 id="docker-compose指令"><a href="#docker-compose指令" class="headerlink" title="docker-compose指令"></a>docker-compose指令</h1><p><code>docker-compose up</code> 启动服务<br><code>docker-compose ps [-a]</code> 查看服务<br><code>docker-compose stop</code> 关闭服务<br><code>docker-compose down</code> 清除容器 </p>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> 镜像名:标签</span><br><span class="line"><span class="keyword">RUN</span> 指令 &amp;&amp;\</span><br><span class="line">    指令 &amp;&amp;\</span><br><span class="line">    指令   </span><br><span class="line">COPY 主机文件路径 容器文件路径</span><br><span class="line">ADD 主机文件路径 容器文件路径</span><br><span class="line">VOLUME ["目录名"]</span><br><span class="line">EXPOSE [“端口号”]</span><br><span class="line">WORKDIR 容器工作目录</span><br><span class="line">ENTRYPOINT ['指令']</span><br><span class="line">CMD ["指令","指令"]</span><br></pre></td></tr></table></figure>
+<h1 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h1><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">	<span class="string">服务名:</span></span><br><span class="line">		<span class="attr">image:</span> <span class="string">镜像名:标签</span></span><br><span class="line">		<span class="attr">build:</span> <span class="string">目录</span></span><br><span class="line">		<span class="attr">ports:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">"主句端口号:容器端口号"</span></span><br><span class="line">		<span class="attr">networks:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">网络名</span></span><br><span class="line">		<span class="attr">depends_on:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">服务名</span></span><br><span class="line">		<span class="attr">command:</span> <span class="string">["指令","指令"]</span></span><br><span class="line">		<span class="attr">expose:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">"端口号"</span></span><br><span class="line">		<span class="attr">deploy:</span></span><br><span class="line">			<span class="attr">mode:</span> <span class="string">replicated</span></span><br><span class="line">			<span class="attr">replicas:</span> <span class="number">6</span></span><br><span class="line">			<span class="attr">resources:</span></span><br><span class="line">				<span class="attr">limits:</span></span><br><span class="line">					<span class="attr">cpus:</span> <span class="string">'0.50'</span></span><br><span class="line">					<span class="attr">memory:</span> <span class="number">50</span><span class="string">M</span></span><br><span class="line">				<span class="attr">reservations:</span></span><br><span class="line">					<span class="attr">cpus:</span> <span class="string">'0.25'</span></span><br><span class="line">					<span class="attr">memory:</span> <span class="number">20</span><span class="string">M</span></span><br><span class="line">			<span class="attr">restart_policy:</span></span><br><span class="line">				<span class="attr">condition:</span> <span class="string">[none][on-failure][any]</span></span><br><span class="line">				<span class="attr">delay:</span> <span class="number">5</span><span class="string">s</span></span><br><span class="line">				<span class="attr">max_attempts:</span> <span class="number">3</span></span><br><span class="line">				<span class="attr">window:</span> <span class="number">120</span><span class="string">s</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">	<span class="string">网络名:</span></span><br><span class="line">	<span class="string">网络名:</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/qq_36148847/article/details/79427878" target="_blank" rel="noopener">参考链接</a></p>
+<h1 id="docker-machine"><a href="#docker-machine" class="headerlink" title="docker-machine"></a>docker-machine</h1><p><code>docker-machine create -d virtualbox 机器名</code> 创建主机<br><code>docker-machine create -d virtualbox --help</code><br><code>docker-machine env 机器名</code> 查看主机信息<br><code>docker-machine ls</code> 查看已有主机<br><code>docker-machine ssh 机器名</code> 进入主机shell<br><code>docker-machine stop 机器名</code> 关闭主机<br><code>docker-machine start 机器名</code> 开启主机<br><code>docker-machine restart 机器名</code> 重启主机<br><code>docker-machine rm 机器名 [--force]</code> 删除主机<br><code>docker-machine scp</code> 主机与宿主机间文件操作</p>
+<h1 id="docker-swarm"><a href="#docker-swarm" class="headerlink" title="docker swarm"></a>docker swarm</h1><p><code>docker swarm init --advertise-addr 主机ip</code> 管理节点初始化集群<br><code>docker swarm join --token 管理节点的token</code> 工作节点加入集群<br><code>docker node ls</code> 查看集群<br><code>docker service create --replicas 3 -p 80:80 --name 服务名 镜像名</code> 新建服务<br><code>docker service ls</code> 查看服务<br><code>docker service ps 服务名</code> 查看服务信息<br><code>docker service logs 服务名</code> 查看服务日志<br><code>docker service scale 服务名=数量</code> 服务伸缩<br><code>docker service rm 服务名</code> 删除服务<br><code>docker stack deploy -c compose文件 服务名</code> 使用compose文件新建服务<br><code>docker stack ls</code> 查看服务<br><code>docker stack down</code> 移除服务<br><code>docker service update 服务名 -h</code> 更新服务<br><code>docker service rollback 服务名</code> 回退服务</p>
 
       
       
@@ -317,13 +332,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/29/docker整理/">docker整理</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
-        <p><span>发布时间:</span>2018年03月20日 - 23时33分</p>
-        <p><span>最后更新:</span>2018年12月27日 - 00时21分</p>
+        <p><span>发布时间:</span>2019年06月29日 - 12时35分</p>
+        <p><span>最后更新:</span>2019年06月29日 - 15时16分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/" title="师傅们的blogs">http://houwenda.github.io/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/29/docker整理/" title="docker整理">http://houwenda.github.io/2019/06/29/docker整理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/06/29/docker整理/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -336,18 +351,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/08/08/shell-made-of-symbols/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          纯符号shell的学习
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PHP文件和目录 笔记补充</div>
+    <a href="/2019/06/03/upload-labs-writeup/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">upload-labs复现笔记</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,8 +364,8 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
-</div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker指令"><span class="toc-number"></span> <span class="toc-text">docker指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-number">0.1.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-number">0.2.</span> <span class="toc-text">容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose指令"><span class="toc-number"></span> <span class="toc-text">docker-compose指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dockerfile"><span class="toc-number"></span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose-yml"><span class="toc-number"></span> <span class="toc-text">docker-compose.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-machine"><span class="toc-number"></span> <span class="toc-text">docker-machine</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-swarm"><span class="toc-number"></span> <span class="toc-text">docker swarm</span></a>
+</li></div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
@@ -407,13 +413,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/08/shell-made-of-symbols/" title="上一篇: 纯符号shell的学习">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/" title="下一篇: PHP文件和目录 笔记补充">
+            <a href="/2019/06/03/upload-labs-writeup/" title="下一篇: upload-labs复现笔记">
                 <i class="fa fa-angle-right"></i>
             </a>
         
