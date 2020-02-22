@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 15px;">environments</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 17.5px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 12.5px;">题解</a>
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/SSTI/" style="font-size: 10px;">SSTI</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 15px;">environments</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 17.5px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 12.5px;">题解</a>
                     </div>
                 </section>
                 
@@ -225,6 +225,72 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-jinja2-ssti" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/22/jinja2-ssti/" class="article-date">
+      <time datetime="2020-02-22T06:09:18.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。<br>
+          
+      
+      
+    </p></blockquote></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LTF/">LTF</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSTI/">SSTI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查备忘/">速查备忘</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/02/22/jinja2-ssti/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-cuda-for-nvidia1080ti" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -423,71 +489,6 @@
 
 
   
-    <article id="post-nustctf2019-web-writeup" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/04/22/nustctf2019-web-writeup/" class="article-date">
-      <time datetime="2019-04-21T16:34:29.000Z" itemprop="datePublished">2019-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect"></a>sendRedirect</h1>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/04/22/nustctf2019-web-writeup/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-NUSTCTF2019-notes-of-creating-challenges" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -535,6 +536,71 @@
       
         <p class="article-more-link">
           <a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-nustctf2019-web-writeup" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/22/nustctf2019-web-writeup/" class="article-date">
+      <time datetime="2019-04-21T16:34:29.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="sendRedirect"><a href="#sendRedirect" class="headerlink" title="sendRedirect"></a>sendRedirect</h1>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LTF/">LTF</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/04/22/nustctf2019-web-writeup/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -813,72 +879,6 @@
 
 
   
-    <article id="post-bash-commands-notes" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/19/bash-commands-notes/" class="article-date">
-      <time datetime="2019-01-19T08:32:45.000Z" itemprop="datePublished">2019-01-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/bash-commands-notes/">Bash笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>  虽然接触Linux很久了，但真正接触命令行操作，到了解命令行哲学，只有大约一年，且是用到什么就学什么，缺乏系统性，在此做一个复习整理，顺便学习一些提高效率的骚操作（其实基础都没学全），方便以后复习、速查，。Linux中的zsh、fish等shell有一些定制化的快捷功能，可以有效提高命令行操作效率，但为了确保拿到一台机器就能够上手，我只学习了bash操作。本篇整理不会全面，也不一定准确，目的是记录我在学习和使用中的关注点，对Linux轻度用户来说这些知识点基本满足日常需要。参考<a href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md" target="_blank" rel="noopener">the-art-of-command-line</a>进行学习、整理。<a href="https://explainshell.com/#" target="_blank" rel="noopener">explainshell.com</a>可以把一行命令中各个参数提取、分析并给出相应解释，个人感觉很强大，在碰到大佬们让人看不懂的组合指令时可以求助于它。<br>
-          
-      
-      
-    </p></blockquote></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习打卡/">学习打卡</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查备忘/">速查备忘</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/19/bash-commands-notes/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -889,7 +889,7 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2019 漏断
+                &copy; 2020 漏断
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
