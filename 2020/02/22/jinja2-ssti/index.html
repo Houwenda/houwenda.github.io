@@ -5,18 +5,18 @@
   
   <title>Jinja2模板注入笔记 | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。">
+  <meta name="description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。hex无法处理连着的两个前大括号，就用反斜杠隔开了。">
 <meta name="keywords" content="速查备忘,Python,SSTI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jinja2模板注入笔记">
 <meta property="og:url" content="http://houwenda.github.io/2020/02/22/jinja2-ssti/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
-<meta property="og:description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。">
+<meta property="og:description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。hex无法处理连着的两个前大括号，就用反斜杠隔开了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-22T06:25:52.704Z">
+<meta property="og:updated_time" content="2020-02-22T06:31:02.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jinja2模板注入笔记">
-<meta name="twitter:description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。">
+<meta name="twitter:description" content="前言 Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。hex无法处理连着的两个前大括号，就用反斜杠隔开了。">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -267,7 +267,7 @@
       
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。<br><a id="more"></a></p>
+<p>Jinja2模板注入去年挺流行的，整理一下知识点，主要针对Python3。hex无法处理连着的两个前大括号，就用反斜杠隔开了。<br><a id="more"></a></p>
 </blockquote>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://zenisltz.github.io/2018/10/10/PySandox/" target="_blank" rel="noopener">https://zenisltz.github.io/2018/10/10/PySandox/</a><br><a href="https://pequalsnp-team.github.io/cheatsheet/flask-jinja2-ssti" target="_blank" rel="noopener">https://pequalsnp-team.github.io/cheatsheet/flask-jinja2-ssti</a><br><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#jinja2" target="_blank" rel="noopener">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#jinja2</a><br><a href="https://0day.work/jinja2-template-injection-filter-bypasses/" target="_blank" rel="noopener">https://0day.work/jinja2-template-injection-filter-bypasses/</a><br><a href="https://xi4or0uji.github.io/2019/01/15/flask之ssti模板注入/" target="_blank" rel="noopener">https://xi4or0uji.github.io/2019/01/15/flask%E4%B9%8Bssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</a><br><a href="https://github.com/epinna/tplmap" target="_blank" rel="noopener">https://github.com/epinna/tplmap工具</a></p>
 <h2 id="基础原理"><a href="#基础原理" class="headerlink" title="基础原理"></a>基础原理</h2><h3 id="Python内置方法"><a href="#Python内置方法" class="headerlink" title="Python内置方法"></a>Python内置方法</h3><p><code>__class__</code>获取当前对象的类，继承链的构造都是在类上进行的<br><code>mro()</code>和<code>__mro__</code>获取当前类的父类<br><code>__subclasses__</code>获取子类<br><code>__base__</code>和<code>__bases__</code>获取基类。注意多重继承，<code>__bases__</code>获取的是一个tuple。<br><code>__dict__</code>列出当前属性/函数的字典<br><code>issubclass(子类, 父类)</code>方法可以判断继承关系</p>
@@ -390,7 +390,7 @@
         <p><span>本文标题:</span><a href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
         <p><span>发布时间:</span>2020年02月22日 - 14时09分</p>
-        <p><span>最后更新:</span>2020年02月22日 - 14时25分</p>
+        <p><span>最后更新:</span>2020年02月22日 - 14时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/02/22/jinja2-ssti/" title="Jinja2模板注入笔记">http://houwenda.github.io/2020/02/22/jinja2-ssti/</a>
             <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2020/02/22/jinja2-ssti/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -479,7 +479,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/27/cuda-for-nvidia1080ti/">Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/29/docker整理/">docker整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/upload-labs-writeup/">upload-labs复现笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/27/cuda-for-nvidia1080ti/">Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/29/docker整理/">docker整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/upload-labs-writeup/">upload-labs复现笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
