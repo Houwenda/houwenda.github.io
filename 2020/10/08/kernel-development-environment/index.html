@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Kernel开发环境配置 | 漏断&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言 最近在看LKM相关的东西，分别尝试用Yocto和Buildroot生成内核和rootfs镜像，QEMU运行。Yocto相比Buildroot可用的工具多一些，但配好后发现无法编译LKM，所以转而使用了Buildroot。Buildroot轻量化，速度快，搭配Docker运行不怕破坏host环境，但不同内核版本存在差异，解决后可以兼容QEMU；LKM代码在host机上编译好传输到虚拟机中就可以">
+<meta name="keywords" content="环境配置,environments,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kernel开发环境配置">
+<meta property="og:url" content="http://houwenda.github.io/2020/10/08/kernel-development-environment/index.html">
+<meta property="og:site_name" content="漏断&#39;s Blog">
+<meta property="og:description" content="前言 最近在看LKM相关的东西，分别尝试用Yocto和Buildroot生成内核和rootfs镜像，QEMU运行。Yocto相比Buildroot可用的工具多一些，但配好后发现无法编译LKM，所以转而使用了Buildroot。Buildroot轻量化，速度快，搭配Docker运行不怕破坏host环境，但不同内核版本存在差异，解决后可以兼容QEMU；LKM代码在host机上编译好传输到虚拟机中就可以">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-08T07:53:09.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kernel开发环境配置">
+<meta name="twitter:description" content="前言 最近在看LKM相关的东西，分别尝试用Yocto和Buildroot生成内核和rootfs镜像，QEMU运行。Yocto相比Buildroot可用的工具多一些，但配好后发现无法编译LKM，所以转而使用了Buildroot。Buildroot轻量化，速度快，搭配Docker运行不怕破坏host环境，但不同内核版本存在差异，解决后可以兼容QEMU；LKM代码在host机上编译好传输到虚拟机中就可以">
+  
+    <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: false,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">漏断</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/SSTI/" style="font-size: 10px;">SSTI</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 13.33px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 20px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 13.33px;">题解</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ltfnjust.club/">LTF</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://104.224.167.8/dokuwiki/doku.php?id=start">TP0t</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xlor.cn">XLor</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://einsturing.top/">Einsturing</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Web狗一枚，现就读南京理工大学，安全爱好者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">漏断</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">漏断</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=n6impqaorK2rq9-u7rH88PI" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/houwenda" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-kernel-development-environment" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/08/kernel-development-environment/" class="article-date">
+      <time datetime="2020-10-08T07:37:10.000Z" itemprop="datePublished">2020-10-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kernel开发环境配置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/environments/">environments</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境配置/">环境配置</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>最近在看LKM相关的东西，分别尝试用Yocto和Buildroot生成内核和rootfs镜像，QEMU运行。Yocto相比Buildroot可用的工具多一些，但配好后发现无法编译LKM，所以转而使用了Buildroot。Buildroot轻量化，速度快，搭配Docker运行不怕破坏host环境，但不同内核版本存在差异，解决后可以兼容QEMU；LKM代码在host机上编译好传输到虚拟机中就可以安装。本篇记录了kernel开发的环境配置，由于是在Linux下写的记录，就直接英文写了。<br><a id="more"></a></p>
+</blockquote>
+<h2 id="Yocto-QEMU"><a href="#Yocto-QEMU" class="headerlink" title="Yocto+QEMU"></a>Yocto+QEMU</h2><h3 id="Information"><a href="#Information" class="headerlink" title="Information"></a>Information</h3><ul>
+<li>Yocto version: 3.1.2</li>
+<li>host system: ubuntu 20.04</li>
+<li>host architecture: x86-64</li>
+<li>target architecture: x86-64</li>
+<li>workdir: any_dir/qemu/ </li>
+</ul>
+<h3 id="Installing-qemu"><a href="#Installing-qemu" class="headerlink" title="Installing qemu"></a>Installing qemu</h3><p>Use apt to install qemu on ubuntu.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install qemu</span><br></pre></td></tr></table></figure></p>
+<h3 id="Configuring-yocto"><a href="#Configuring-yocto" class="headerlink" title="Configuring yocto"></a>Configuring yocto</h3><p>Install toolchain and download images.</p>
+<ol>
+<li>toolchain<br>For quick development, we choose not to compile yocto from source, but use pre-built images instead.<br>Thus, we can install stand-alone cross-development toolchain for simplicity.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-core2-64-qemux86-64-toolchain-3.1.2.sh</span><br><span class="line">chmod +x poky-glibc-x86_64-core-image-sato-core2-64-qemux86-64-toolchain-3.1.2.sh</span><br><span class="line">sudo ./poky-glibc-x86_64-core-image-sato-core2-64-qemux86-64-toolchain-3.1.2.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Now poky should have been installed in /opt/poky/3.1.2.</p>
+<p>The toolchain installation file name is composed of several parts. Here is the offical explaination.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">poky-glibc-host_system-image_type-arch-toolchain-release_version.sh</span><br><span class="line">     Where:</span><br><span class="line">         host_system is a string representing your development system:</span><br><span class="line">                    i686 or x86_64.</span><br><span class="line"></span><br><span class="line">         image_type is a string representing the image you wish to</span><br><span class="line">                develop a Software Development Toolkit (SDK) for use against.</span><br><span class="line">                The Yocto Project builds toolchain installers using the</span><br><span class="line">                following BitBake command:</span><br><span class="line">                    bitbake core-image-sato -c populate_sdk</span><br><span class="line"></span><br><span class="line">         arch is a string representing the tuned target architecture:</span><br><span class="line">                    i586, x86_64, powerpc, mips, armv7a or armv5te</span><br><span class="line"></span><br><span class="line">         release_version is a string representing the release number of the</span><br><span class="line">                Yocto Project:</span><br><span class="line">                    1.8, 1.8+snapshot</span><br></pre></td></tr></table></figure></p>
+<p>I cannot find a perfect match(x86_64) for <code>arch</code> so I use <code>core2</code> as the value of <code>arch</code>, it works for my case though.</p>
+<ol start="2">
+<li>pre-built image files<br>Yocto linux needs kernel and filesystem to boot, both of which are called image file. Kernel is the core of linux, while filesystem contains files and tools that are needed during staring period and user development.</li>
+</ol>
+<p>x86-64 pre-built images can be found in <a href="http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/machines/" target="_blank" rel="noopener">http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/machines/</a> web directory, containing 1 type of kernel(.bin file) and several kinds of filesystem: minimal, minimal-dev, sato, sato-dev, sato-sdk, sato-sdk-ptest. Each kind of filesystem are packaged in 3 format: ext4, wic, tar.bz2. We choose ext4 as it can be used by qemu without extraction.</p>
+<p>Download kernel image into workdir.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/machines/qemu/qemux86-64/bzImage-qemux86-64.bin</span><br></pre></td></tr></table></figure></p>
+<p>Download filesystem image into workdir. Here we use sato-sdk filesystem because it provides GUI and SSH access, along with gdb which is quite during kernel development.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/machines/qemu/qemux86-64/core-image-sato-sdk-qemux86-64.ext4</span><br></pre></td></tr></table></figure></p>
+<h3 id="Emulating-with-qemu"><a href="#Emulating-with-qemu" class="headerlink" title="Emulating with qemu"></a>Emulating with qemu</h3><ol>
+<li>bind pre-built images with qemu<br>Download qemu config file into workdir. Older version releases did not contain this config file, but in newer versions this file is required when running yocto with qemu.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.yoctoproject.org/releases/yocto/yocto-3.1.2/machines/qemu/qemux86-64/core-image-sato-sdk-qemux86-64.qemuboot.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The qb_mem is the memory allocated for virtual machine, 512Mb by default. We can change it if needed.</p>
+<p>Now we have 3 files in workdir.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">houwd@Desktop:~/Desktop/qemu$ ls</span><br><span class="line">bzImage-qemux86-64.bin</span><br><span class="line">core-image-sato-dev-qemux86-64.ext4</span><br><span class="line">core-image-sato-dev-qemux86-64.qemuboot.conf</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>set up emulation environment</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /opt/poky/3.1.2/environment-setup-core2-64-poky-linux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run qemu<br>Poky registers <code>runqemu</code> script in current shell environment. We can start emulation using the following command.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runqemu .</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>QEMU window should appear and we can interact with the yocto system GUI now.</p>
+<h3 id="Basic-usage"><a href="#Basic-usage" class="headerlink" title="Basic usage"></a>Basic usage</h3><p>SSH is recommended in case GUI does not work smoothly.<br>We can transfer files using scp.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.7.2</span><br></pre></td></tr></table></figure></p>
+<p>Root login password is disabled in the system.<br>gcc, g++, make and other compilation tools are pre-installed in sato-sdk filesystem.<br>gdb, gdbserver, trace and strace are pre-installed in sato-sdk filesystem.</p>
+<h3 id="LKM-development"><a href="#LKM-development" class="headerlink" title="LKM development"></a>LKM development</h3><p>According to Official Documents, we can develop new kernel modules which are called out-of-tree modules, by creating some scripts.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src/kernel</span><br><span class="line">make scripts</span><br><span class="line"><span class="built_in">cd</span> /lib/modules/`uname -r`/build</span><br><span class="line">make scripts</span><br></pre></td></tr></table></figure></p>
+<p>However, I was still unable to build kernel module.<br>Try buildroot instead!</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>You can use other filesystem. Minimal filesystem does not have ssh installed and only sdk filesytem provides gdb. </p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html" target="_blank" rel="noopener">https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html</a></li>
+<li><a href="https://www.yoctoproject.org/docs/3.1/dev-manual/dev-manual.html" target="_blank" rel="noopener">https://www.yoctoproject.org/docs/3.1/dev-manual/dev-manual.html</a></li>
+<li><a href="https://www.yoctoproject.org/docs/3.1/sdk-manual/sdk-manual.html" target="_blank" rel="noopener">https://www.yoctoproject.org/docs/3.1/sdk-manual/sdk-manual.html</a></li>
+<li><a href="https://www.yoctoproject.org/docs/3.1.2/kernel-dev/kernel-dev.html#working-with-out-of-tree-modules" target="_blank" rel="noopener">https://www.yoctoproject.org/docs/3.1.2/kernel-dev/kernel-dev.html#working-with-out-of-tree-modules</a></li>
+</ul>
+<h2 id="Buildroot-QEMU"><a href="#Buildroot-QEMU" class="headerlink" title="Buildroot+QEMU"></a>Buildroot+QEMU</h2><h3 id="Information-1"><a href="#Information-1" class="headerlink" title="Information"></a>Information</h3><ul>
+<li>compile environmnet: docker-ce</li>
+<li>buildroot directory: /mnt/buildroot-2020.02.6</li>
+<li>kernel version: 5.4.61 (downloaded automatically from <a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.61.tar.xz" target="_blank" rel="noopener">https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.61.tar.xz</a>)</li>
+<li>host system: ubuntu 20.04</li>
+<li>host architecture: x86-64</li>
+<li>target architecture: x86-64</li>
+</ul>
+<h3 id="Buildroot-Compilation"><a href="#Buildroot-Compilation" class="headerlink" title="Buildroot Compilation"></a>Buildroot Compilation</h3><p>I use docker container as the building environmnet. Here is the directory structure.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- linux-kernel</span><br><span class="line">| - Dockerfile</span><br><span class="line">| - docker-compose.yml</span><br><span class="line">| - buildroot-2020.02.6</span><br><span class="line">  | ......</span><br></pre></td></tr></table></figure></p>
+<p>Dockerfile<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">20.04</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sed -i <span class="string">'s/archive.ubuntu.com/mirrors.aliyun.com/g'</span> /etc/apt/sources.list &amp;&amp; \</span></span><br><span class="line"><span class="bash">    apt update &amp;&amp; \ </span></span><br><span class="line"><span class="bash">    apt install -y bc curl gcc git libssl-dev libncurses5-dev lzop make u-boot-tools flex bison file g++ wget cpio unzip rsync python3</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /mnt</span></span><br></pre></td></tr></table></figure></p>
+<p>docker-compose.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">    ubuntu:</span><br><span class="line">        build: ./</span><br><span class="line">        volumes: </span><br><span class="line">            - &quot;./buildroot-2020.02.6:/mnt/buildroot-2020.02.6&quot;</span><br><span class="line">            - &quot;./linux-5.4.66.tar:/mnt/linux-5.4.66.tar&quot;</span><br><span class="line">        command: &quot;tail -F /dev/null&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Enter docker container environment. Cd into buildroot directory and start configuring.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> builtroot-2020.02.6</span><br><span class="line">make list-defconfigs  <span class="comment"># list supported platforms</span></span><br><span class="line">make qemu_x86_64_defconfig  <span class="comment"># configuration written to /mnt/buildroot-2020.02.6/.config</span></span><br><span class="line">make menuconfig  <span class="comment"># configure</span></span><br></pre></td></tr></table></figure></p>
+<p>Use busybox as the init system.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; System configuration &gt; Init system &gt; BusyBox</span><br></pre></td></tr></table></figure></p>
+<p>Enable make for later development.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Target packages &gt; Development tools &gt; make</span><br></pre></td></tr></table></figure></p>
+<p>Disable host package QEMU since we have installed it on our host machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Host utilities &gt; host qemu</span><br></pre></td></tr></table></figure></p>
+<p>Download source code. Generate kernel image and rootfs image.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make FORCE_UNSAFE_CONFIGURE=1  <span class="comment"># compile start</span></span><br><span class="line"><span class="comment"># I'm running as root in Docker container, so FORCE_UNSAFE_CONFIGURE=1 is needed.</span></span><br></pre></td></tr></table></figure></p>
+<p>Configure linux kenrel details. Enable PCI support to use virtual IO disk. Enable IA32 Emulation, otherwise kernel cannot detect /dev/vda.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make linux-menuconfig</span><br><span class="line">&gt; Device Drivers - PCI support</span><br><span class="line">&gt; Binary Emulation - IA32_Emulation</span><br></pre></td></tr></table></figure></p>
+<p>Check some configuration parameters that should be enabled if kernel failed to mount root fs in QEMU.<br>Use <code>/</code> to search parameters.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_EXT4_FS=y</span><br><span class="line">CONFIG_IA32_EMULATION=y</span><br><span class="line">CONFIG_VIRTIO_PCI=y (Virtualization -&gt; PCI driver for virtio devices)</span><br><span class="line">CONFIG_VIRTIO_BALLOON=y (Virtualization -&gt; Virtio balloon driver)</span><br><span class="line">CONFIG_VIRTIO_BLK=y (Device Drivers -&gt; Block -&gt; Virtio block driver)</span><br><span class="line">CONFIG_VIRTIO_NET=y (Device Drivers -&gt; Network device support -&gt; Virtio network driver)</span><br><span class="line">CONFIG_VIRTIO=y (automatically selected)</span><br><span class="line">CONFIG_VIRTIO_RING=y (automatically selected)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Emulating-with-QEMU"><a href="#Emulating-with-QEMU" class="headerlink" title="Emulating with QEMU"></a>Emulating with QEMU</h3><p>Cd into buildroot image outputs directory on our host machine.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd any/buildroot-2020.02.6/output/images &amp;&amp; ls -lh</span><br><span class="line">total 26M</span><br><span class="line">-rw-r--r-- 1 root root 4.3M 9月  29 18:45 bzImage</span><br><span class="line">-rw-r--r-- 1 root root  60M 9月  29 18:56 rootfs.ext2</span><br><span class="line">lrwxrwxrwx 1 root root   11 9月  29 17:20 rootfs.ext4 -&gt; rootfs.ext2</span><br></pre></td></tr></table></figure></p>
+<p>Now we have bzImage as the kernel image, rootfs.ext2 and rootfs.ext4 as the root filesystem.</p>
+<p>Start QEMU with TCP forwarding on. VM port 22 is forwarded to host port 5555 for ssh connection.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-x86_64 -kernel bzImage -drive file=rootfs.ext4,if=virtio,format=raw \</span><br><span class="line">-netdev user,id=net0,net=192.168.76.0/24,dhcpstart=192.168.76.9,hostfwd=tcp::5555-:22 \</span><br><span class="line">-device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 \</span><br><span class="line">-cpu core2duo -m 2048 \</span><br><span class="line">-append &apos;root=/dev/vda rw console=ttyS0&apos; -enable-kvm</span><br></pre></td></tr></table></figure></p>
+<p>Openssh does not allow remote root login by default, so we need to change sshd_config and restart sshd in the QEMU window.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># add the following line</span></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">/etc/init.d/S50sshd restart</span><br></pre></td></tr></table></figure></p>
+<p>Ssh into VM.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@localhost -p 5555</span><br></pre></td></tr></table></figure></p>
+<h3 id="LKM-Development"><a href="#LKM-Development" class="headerlink" title="LKM Development"></a>LKM Development</h3><p>Buildroot system does not have gcc or g++ installed. So we need to compile kernel modules on our host machine and scp .ko file into VM.<br>Kernel source codes and headers are needed to compile kernel modules. Usually those files can be installed by package managers (linux-devel and linux-headers for apt).<br>Our kernel source are placed in any/buildroot-2020.02.6/output/build/linux-5.4.61, which should be used in LKM Makefile.<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">KDIR = ~/Desktop/linux-kernel/buildroot-2020.02.6/output/build/linux-5.4.61</span><br><span class="line"><span class="section">all:</span></span><br><span class="line">    make -C <span class="variable">$(KDIR)</span> M=`pwd` modules</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    make -C <span class="variable">$(KDIR)</span> M=`pwd` clean</span><br></pre></td></tr></table></figure></p>
+<p>Kbuild file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">KVERSION = 5.4.61</span><br><span class="line">obj-m = hello.o</span><br></pre></td></tr></table></figure></p>
+<p>hello.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/kernel.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        printk(KERN_INFO <span class="string">"Hello from hello\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Good bye\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module_init(hello_init);</span><br><span class="line">module_exit(hello_exit);</span><br></pre></td></tr></table></figure></p>
+<p>Compile the module to generate .ko file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ make</span><br><span class="line">make -C ~/Desktop/linux-kernel/buildroot-2020.02.6/output/build/linux-5.4.61 M=`<span class="built_in">pwd</span>` modules</span><br><span class="line">make[1]: Entering directory <span class="string">'/home/houwd/Desktop/linux-kernel/buildroot-2020.02.6/output/build/linux-5.4.61'</span></span><br><span class="line">  CC [M]  /home/houwd/Desktop/hello_test/hello.o</span><br><span class="line">  Building modules, stage 2.</span><br><span class="line">  MODPOST 1 modules</span><br><span class="line">  CC [M]  /home/houwd/Desktop/hello_test/hello.mod.o</span><br><span class="line">  LD [M]  /home/houwd/Desktop/hello_test/hello.ko</span><br><span class="line">make[1]: Leaving directory <span class="string">'/home/houwd/Desktop/linux-kernel/buildroot-2020.02.6/output/build/linux-5.4.61'</span></span><br><span class="line">$ ls</span><br><span class="line">hello.c   hello.mod    hello.mod.o  Kbuild    modules.order</span><br><span class="line">hello.ko  hello.mod.c  hello.o      Makefile  Module.symvers</span><br></pre></td></tr></table></figure></p>
+<p>scp hello.ko into VM /root directory and install it in VM<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ scp -P 5555 hello.ko root@localhost:/root</span><br><span class="line">root@localhost<span class="string">'s password: </span></span><br><span class="line"><span class="string">hello.ko                                      100% 3416     2.1MB/s   00:0</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line">insmod hello.ko &amp;&amp; lsmod | grep hello</span><br><span class="line">rmmod hello.ko</span><br></pre></td></tr></table></figure>
+<p>Check kernel messages generated by our LKM.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ dmesg | tail -5</span><br><span class="line">[51256.846327] tsc: Marking TSC unstable due to clocksource watchdog</span><br><span class="line">[53923.247828] hello: loading out-of-tree module taints kernel.</span><br><span class="line">[53923.250505] Hello from hello</span><br><span class="line">[53945.360817] Good <span class="built_in">bye</span></span><br><span class="line">[54098.636185] Hello from hello</span><br></pre></td></tr></table></figure></p>
+<p>Success!</p>
+<p>I use a shellscript for quick deployment.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">make &amp;&amp; \</span><br><span class="line">scp -P 5555 hello.ko root@localhost:/root &amp;&amp; \</span><br><span class="line">ssh root@localhost -p 5555 &quot;rmmod hello &amp;&amp; insmod /root/hello.ko &amp;&amp; lsmod | grep hello &amp;&amp; dmesg | tail -10&quot;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-x86_64 -kernel bzImage -drive file=rootfs.ext4,if=virtio,format=raw -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -show-cursor -usb -device usb-tablet -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 -cpu core2duo -m 2048 -serial mon:vc -serial null -append &apos;root=/dev/vda rw mem=2048M ip=192.168.7.2::192.168.7.1:255.255.255.0 oprofile.timer=1&apos; -enable-kvm</span><br></pre></td></tr></table></figure>
+<p>We can use kernel module to modify or add functions in the kernel space, such as implementing character/block device drivers, hooking syscalls, setting up network filters (using netfilter).<br>Character/block device drivers can be created by implementing several methods and register as a device.<br>Syscall hooks can be created by the following steps: get the address of syscall table, modify register to allow change of syscall table, replace the target function with your own function in the table, modify register to disallow change of syscall table.<br>Network filters can be easily implemented by using netfilter which is embedded in kernel by default, iptables also uses netfilter as backend.</p>
+<h3 id="GDB-debugging"><a href="#GDB-debugging" class="headerlink" title="GDB debugging"></a>GDB debugging</h3><p>We can use QEMU and GDB to debug the kernel.<br>Start QEMU with <code>-s</code> option to start gdbserver at localhost:1234, <code>-S</code> to freeze cpu at startup.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-x86_64 -kernel bzImage -drive file=rootfs.ext4,<span class="keyword">if</span>=virtio,format=raw \</span><br><span class="line">-netdev user,id=net0,net=192.168.76.0/24,dhcpstart=192.168.76.9,hostfwd=tcp::5555-:22 \</span><br><span class="line">-device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 \</span><br><span class="line">-cpu core2duo -m 2048 \</span><br><span class="line">-append <span class="string">'root=/dev/vda rw console=ttyS0'</span> \</span><br><span class="line">-s -S</span><br></pre></td></tr></table></figure></p>
+<p>In another terminal, start GDB using vmlinux file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb any/buildroot-2020.02.6/output/build/linux-5.4.61/vmlinux</span><br><span class="line">(gdb) target remote localhost:1234  <span class="comment"># connect to QEMU gdbserver</span></span><br><span class="line">(gdb) b start_kernel</span><br><span class="line">(gdb) c</span><br></pre></td></tr></table></figure></p>
+<p>Due to KVM is enabled by default, gdb is unable to break on start_kernel breakpoint.<br>Currently I don’t need GDB as debugger, but many BIOS firmwares support KVM control.</p>
+<h3 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://blog.csdn.net/xj178926426/article/details/53118589" target="_blank" rel="noopener">https://blog.csdn.net/xj178926426/article/details/53118589</a></li>
+<li><a href="https://jgsun.github.io/2020/05/28/qemu-x86-64/" target="_blank" rel="noopener">https://jgsun.github.io/2020/05/28/qemu-x86-64/</a></li>
+<li><a href="https://stackoverflow.com/questions/17242403/linux-running-self-compiled-kernel-in-qemu-vfs-unable-to-mount-root-fs-on-unk?rq=1" target="_blank" rel="noopener">https://stackoverflow.com/questions/17242403/linux-running-self-compiled-kernel-in-qemu-vfs-unable-to-mount-root-fs-on-unk?rq=1</a></li>
+</ul>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/10/08/kernel-development-environment/">Kernel开发环境配置</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
+        <p><span>发布时间:</span>2020年10月08日 - 15时37分</p>
+        <p><span>最后更新:</span>2020年10月08日 - 15时53分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/10/08/kernel-development-environment/" title="Kernel开发环境配置">http://houwenda.github.io/2020/10/08/kernel-development-environment/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2020/10/08/kernel-development-environment/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/19/windows-knowledge/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows知识点</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Yocto-QEMU"><span class="toc-number">2.</span> <span class="toc-text">Yocto+QEMU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Information"><span class="toc-number">2.1.</span> <span class="toc-text">Information</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-qemu"><span class="toc-number">2.2.</span> <span class="toc-text">Installing qemu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-yocto"><span class="toc-number">2.3.</span> <span class="toc-text">Configuring yocto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Emulating-with-qemu"><span class="toc-number">2.4.</span> <span class="toc-text">Emulating with qemu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-usage"><span class="toc-number">2.5.</span> <span class="toc-text">Basic usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LKM-development"><span class="toc-number">2.6.</span> <span class="toc-text">LKM development</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.7.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">2.8.</span> <span class="toc-text">References</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buildroot-QEMU"><span class="toc-number">3.</span> <span class="toc-text">Buildroot+QEMU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Information-1"><span class="toc-number">3.1.</span> <span class="toc-text">Information</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buildroot-Compilation"><span class="toc-number">3.2.</span> <span class="toc-text">Buildroot Compilation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Emulating-with-QEMU"><span class="toc-number">3.3.</span> <span class="toc-text">Emulating with QEMU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LKM-Development"><span class="toc-number">3.4.</span> <span class="toc-text">LKM Development</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB-debugging"><span class="toc-number">3.5.</span> <span class="toc-text">GDB debugging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References-1"><span class="toc-number">3.6.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2020/07/19/windows-knowledge/" title="下一篇: Windows知识点">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/08/kernel-development-environment/">Kernel开发环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/19/windows-knowledge/">Windows知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/classical-configuration-writing-vulnerability-note/">经典写配置漏洞笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Bugku-Pwn-Walkthrough/">Bugku Pwn Walkthrough</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/22/jinja2-ssti/">Jinja2模板注入笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/27/cuda-for-nvidia1080ti/">Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/29/docker整理/">docker整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/03/upload-labs-writeup/">upload-labs复现笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/nustctf2019-web-writeup/">NUSTCTF2019 Web题解（部分）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/10/python-basics/">Python基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/22/hid-attack-with-P4wnP1-a-l-o-a/">如何用P4wnP1_aloa进行HID攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/21/shell-script-notes/">ShellScript笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/bash-commands-notes/">Bash笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/how-to-import-mkv-into-Adobe-Premiere/">如何将mkv视频导入Adobe Premiere</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/shell-made-of-symbols/">纯符号shell的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/nust-ctf-e5-b8-88-e5-82-85-e4-bb-ac-e7-9a-84blogs/">师傅们的blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/php-e6-96-87-e4-bb-b6-e5-92-8c-e7-9b-ae-e5-bd-95-e7-ac-94-e8-ae-b0-e8-a1-a5-e5-85-85/">PHP文件和目录 笔记补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/04/how-to-install-sqli-labs-on-windows-10/">How to install sqli-labs on Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/02/xamppdvwa-on-windows-10-installation-guide/">XAMPP+DVWA on Windows 10 installation guide</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/vmware-workstation-pro12kali2017-3-e5-ae-89-e8-a3-85-e8-ae-b0-e5-bd-95/">VMware Workstation Pro12+Kali2017.3安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/regex-notes/">正则补充</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/28/php-e7-ac-94-e8-ae-b0/">PHP笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 漏断
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">总浏览量: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-" + backgroundnum +".jpg)";
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

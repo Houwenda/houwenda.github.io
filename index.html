@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/PHP/" style="font-size: 17.5px;">PHP</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/SSTI/" style="font-size: 10px;">SSTI</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 15px;">environments</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 20px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 12.5px;">题解</a>
+                        <a href="/tags/BadUSB/" style="font-size: 10px;">BadUSB</a> <a href="/tags/HID攻击/" style="font-size: 10px;">HID攻击</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/SSTI/" style="font-size: 10px;">SSTI</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/environments/" style="font-size: 16.67px;">environments</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/出题笔记/" style="font-size: 10px;">出题笔记</a> <a href="/tags/学习打卡/" style="font-size: 20px;">学习打卡</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/格式转换/" style="font-size: 10px;">格式转换</a> <a href="/tags/环境配置/" style="font-size: 13.33px;">环境配置</a> <a href="/tags/踩坑记录/" style="font-size: 10px;">踩坑记录</a> <a href="/tags/速查备忘/" style="font-size: 20px;">速查备忘</a> <a href="/tags/题解/" style="font-size: 13.33px;">题解</a>
                     </div>
                 </section>
                 
@@ -225,6 +225,68 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-kernel-development-environment" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/08/kernel-development-environment/" class="article-date">
+      <time datetime="2020-10-08T07:37:10.000Z" itemprop="datePublished">2020-10-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/08/kernel-development-environment/">Kernel开发环境配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>最近在看LKM相关的东西，分别尝试用Yocto和Buildroot生成内核和rootfs镜像，QEMU运行。Yocto相比Buildroot可用的工具多一些，但配好后发现无法编译LKM，所以转而使用了Buildroot。Buildroot轻量化，速度快，搭配Docker运行不怕破坏host环境，但不同内核版本存在差异，解决后可以兼容QEMU；LKM代码在host机上编译好传输到虚拟机中就可以安装。本篇记录了kernel开发的环境配置，由于是在Linux下写的记录，就直接英文写了。<br>
+          
+      
+      
+    </p></blockquote></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/environments/">environments</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境配置/">环境配置</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/10/08/kernel-development-environment/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-windows-knowledge" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -687,71 +749,6 @@
 
 
   
-    <article id="post-NUSTCTF2019-notes-of-creating-challenges" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/" class="article-date">
-      <time datetime="2019-04-21T16:34:29.000Z" itemprop="datePublished">2019-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&#160; &#160; &#160; &#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题过程、收获。<br>
-          
-      
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/出题笔记/">出题笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-nustctf2019-web-writeup" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -817,11 +814,11 @@
 
 
   
-    <article id="post-python-basics" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-NUSTCTF2019-notes-of-creating-challenges" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/03/10/python-basics/" class="article-date">
-      <time datetime="2019-03-10T15:31:43.000Z" itemprop="datePublished">2019-03-10</time>
+      <a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/" class="article-date">
+      <time datetime="2019-04-21T16:34:29.000Z" itemprop="datePublished">2019-04-22</time>
 </a>
     </div>
   
@@ -832,7 +829,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/10/python-basics/">Python基础</a>
+      <a class="article-title" href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/">NUSTCTF2019出题笔记</a>
     </h1>
   
 
@@ -842,11 +839,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>为南京理工大学网络安全爱好者协会寒假集训写的Python入门材料</p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&#160; &#160; &#160; &#160;本次校赛共参与出了五题，四道Web，一道Misc。Web涵盖的常见漏洞有XSS、SSRF打Redis，特殊漏洞有服务器配置错误导致任意更改文件，NodeJS某版本任意文件读取漏洞。Misc则是一道Linux提权题。其中sendRedirect相当于Web签到题，put your hands up,net-disk有选手解出。在此记录一下出题过程、收获。<br>
           
       
       
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -858,12 +855,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/出题笔记/">出题笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a href="/2019/03/10/python-basics/#more">阅读全文 >></a>
+          <a href="/2019/04/22/NUSTCTF2019-notes-of-creating-challenges/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
