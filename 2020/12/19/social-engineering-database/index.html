@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>docker整理 | 漏断&#39;s Blog</title>
+  <title>Social Engineering Database Setup | 漏断&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
-<meta name="keywords" content="docker,速查备忘">
+  <meta name="description" content="前言 注意：非法获取、贩卖个人信息系犯罪行为，本文及相关代码仅供学习使用。privacy原作者现已将项目主要文件移除。本次以github上收tx律师函的项目privacy为契机，尝试对四组数据进行清洗，并导入Elasticsearch数据库中，最终实现快速查询。本文记录了建立信息库的主要流程和注意点。">
+<meta name="keywords" content="social engineering">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker整理">
-<meta property="og:url" content="http://houwenda.github.io/2019/06/29/docker整理/index.html">
+<meta property="og:title" content="Social Engineering Database Setup">
+<meta property="og:url" content="http://houwenda.github.io/2020/12/19/social-engineering-database/index.html">
 <meta property="og:site_name" content="漏断&#39;s Blog">
-<meta property="og:description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
+<meta property="og:description" content="前言 注意：非法获取、贩卖个人信息系犯罪行为，本文及相关代码仅供学习使用。privacy原作者现已将项目主要文件移除。本次以github上收tx律师函的项目privacy为契机，尝试对四组数据进行清洗，并导入Elasticsearch数据库中，最终实现快速查询。本文记录了建立信息库的主要流程和注意点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-29T07:16:35.785Z">
+<meta property="og:updated_time" content="2020-12-19T14:54:44.653Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker整理">
-<meta name="twitter:description" content="前言 从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。">
+<meta name="twitter:title" content="Social Engineering Database Setup">
+<meta name="twitter:description" content="前言 注意：非法获取、贩卖个人信息系犯罪行为，本文及相关代码仅供学习使用。privacy原作者现已将项目主要文件移除。本次以github上收tx律师函的项目privacy为契机，尝试对四组数据进行清洗，并导入Elasticsearch数据库中，最终实现快速查询。本文记录了建立信息库的主要流程和注意点。">
   
     <link rel="alternative" href="/atom.xml" title="漏断&#39;s Blog" type="application/atom+xml">
   
@@ -226,11 +226,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-docker整理" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-social-engineering-database" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/29/docker整理/" class="article-date">
-      <time datetime="2019-06-29T04:35:44.000Z" itemprop="datePublished">2019-06-29</time>
+      <a href="/2020/12/19/social-engineering-database/" class="article-date">
+      <time datetime="2020-12-19T09:09:53.000Z" itemprop="datePublished">2020-12-19</time>
 </a>
     </div>
   
@@ -241,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      docker整理
+      Social Engineering Database Setup
     </h1>
   
 
@@ -249,14 +249,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LTF/">LTF</a><a class="article-category-link" href="/categories/LTF/开发/">开发</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查备忘/">速查备忘</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/social-engineering/">social engineering</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,16 +263,18 @@
       
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>从去年十月接触docker容器，到现在已有半年多，期间出过几道CTF题，对部分docker指令已经产生了肌肉记忆，但对一些常用度较低的还需现用现查，这里做一下整理，方便速查。swarm和machine为新了解的内容，也做一下记录。<br><a id="more"></a></p>
+<p>注意：非法获取、贩卖个人信息系犯罪行为，本文及<a href="https://github.com/Houwenda/ES-privacy" target="_blank" rel="noopener">相关代码</a>仅供学习使用。<a href="https://github.com/kallydev/privacy" target="_blank" rel="noopener">privacy</a>原作者现已将项目主要文件移除。<br>本次以github上收tx律师函的项目privacy为契机，尝试对四组数据进行清洗，并导入Elasticsearch数据库中，最终实现快速查询。本文记录了建立信息库的主要流程和注意点。<br><a id="more"></a></p>
 </blockquote>
-<h1 id="docker指令"><a href="#docker指令" class="headerlink" title="docker指令"></a>docker指令</h1><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p><code>docker search 镜像名</code> 在dockerhub查找镜像<br><code>docker pull 镜像名</code> 下载镜像<br><code>docker rmi 镜像名</code> 删除镜像<br><code>docker images</code> 查看本地镜像<br><code>docker build -t 镜像名:标签 -f Dockerfile文件路径 .</code> 构建镜像</p>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p><code>docker run 镜像名</code> 创建容器，执行默认操作<br><code>docker run -it -p 主机端口号:容器端口号 镜像名 /bin/bash</code> 创建容器，进入shell<br><code>docker run -d 镜像名</code> 后台创建容器，执行默认操作<br><code>docker exec -it 容器名 /bin/bash</code> 进入正在运行容器的shell<br><code>docker stop 容器名</code> 停止容器<br><code>docker start 容器名</code> 启动容器<br><code>docker ps [-a]</code> 查看已有容器<br><code>docker rm [-f] 容器名</code> 删除容器<br><code>docker commit 容器名 镜像名</code>  将容器提交保存为镜像<br><code>docker cp &lt;主机目录 容器:目录&gt;(&lt;容器:目录 主机目录&gt;)</code> 容器与主机间文件操作</p>
-<h1 id="docker-compose指令"><a href="#docker-compose指令" class="headerlink" title="docker-compose指令"></a>docker-compose指令</h1><p><code>docker-compose up</code> 启动服务<br><code>docker-compose ps [-a]</code> 查看服务<br><code>docker-compose stop</code> 关闭服务<br><code>docker-compose down</code> 清除容器 </p>
-<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> 镜像名:标签</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> 指令 &amp;&amp;\</span></span><br><span class="line"><span class="bash">    指令 &amp;&amp;\</span></span><br><span class="line"><span class="bash">    指令   </span></span><br><span class="line"><span class="bash">COPY 主机文件路径 容器文件路径</span></span><br><span class="line"><span class="bash">ADD 主机文件路径 容器文件路径</span></span><br><span class="line"><span class="bash">VOLUME [<span class="string">"目录名"</span>]</span></span><br><span class="line"><span class="bash">EXPOSE [“端口号”]</span></span><br><span class="line"><span class="bash">WORKDIR 容器工作目录</span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">'指令'</span>]</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"指令"</span>,<span class="string">"指令"</span>]</span></span><br></pre></td></tr></table></figure>
-<h1 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h1><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">	<span class="string">服务名:</span></span><br><span class="line">		<span class="attr">image:</span> <span class="string">镜像名:标签</span></span><br><span class="line">		<span class="attr">build:</span> <span class="string">目录</span></span><br><span class="line">		<span class="attr">ports:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">"主句端口号:容器端口号"</span></span><br><span class="line">		<span class="attr">networks:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">网络名</span></span><br><span class="line">		<span class="attr">depends_on:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">服务名</span></span><br><span class="line">		<span class="attr">command:</span> <span class="string">["指令","指令"]</span></span><br><span class="line">		<span class="attr">expose:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">"端口号"</span></span><br><span class="line">		<span class="attr">deploy:</span></span><br><span class="line">			<span class="attr">mode:</span> <span class="string">replicated</span></span><br><span class="line">			<span class="attr">replicas:</span> <span class="number">6</span></span><br><span class="line">			<span class="attr">resources:</span></span><br><span class="line">				<span class="attr">limits:</span></span><br><span class="line">					<span class="attr">cpus:</span> <span class="string">'0.50'</span></span><br><span class="line">					<span class="attr">memory:</span> <span class="number">50</span><span class="string">M</span></span><br><span class="line">				<span class="attr">reservations:</span></span><br><span class="line">					<span class="attr">cpus:</span> <span class="string">'0.25'</span></span><br><span class="line">					<span class="attr">memory:</span> <span class="number">20</span><span class="string">M</span></span><br><span class="line">			<span class="attr">restart_policy:</span></span><br><span class="line">				<span class="attr">condition:</span> <span class="string">[none][on-failure][any]</span></span><br><span class="line">				<span class="attr">delay:</span> <span class="number">5</span><span class="string">s</span></span><br><span class="line">				<span class="attr">max_attempts:</span> <span class="number">3</span></span><br><span class="line">				<span class="attr">window:</span> <span class="number">120</span><span class="string">s</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">	<span class="string">网络名:</span></span><br><span class="line">	<span class="string">网络名:</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/qq_36148847/article/details/79427878" target="_blank" rel="noopener">参考链接</a></p>
-<h1 id="docker-machine"><a href="#docker-machine" class="headerlink" title="docker-machine"></a>docker-machine</h1><p><code>docker-machine create -d virtualbox 机器名</code> 创建主机<br><code>docker-machine create -d virtualbox --help</code><br><code>docker-machine env 机器名</code> 查看主机信息<br><code>docker-machine ls</code> 查看已有主机<br><code>docker-machine ssh 机器名</code> 进入主机shell<br><code>docker-machine stop 机器名</code> 关闭主机<br><code>docker-machine start 机器名</code> 开启主机<br><code>docker-machine restart 机器名</code> 重启主机<br><code>docker-machine rm 机器名 [--force]</code> 删除主机<br><code>docker-machine scp</code> 主机与宿主机间文件操作</p>
-<h1 id="docker-swarm"><a href="#docker-swarm" class="headerlink" title="docker swarm"></a>docker swarm</h1><p><code>docker swarm init --advertise-addr 主机ip</code> 管理节点初始化集群<br><code>docker swarm join --token 管理节点的token</code> 工作节点加入集群<br><code>docker node ls</code> 查看集群<br><code>docker service create --replicas 3 -p 80:80 --name 服务名 镜像名</code> 新建服务<br><code>docker service ls</code> 查看服务<br><code>docker service ps 服务名</code> 查看服务信息<br><code>docker service logs 服务名</code> 查看服务日志<br><code>docker service scale 服务名=数量</code> 服务伸缩<br><code>docker service rm 服务名</code> 删除服务<br><code>docker stack deploy -c compose文件 服务名</code> 使用compose文件新建服务<br><code>docker stack ls</code> 查看服务<br><code>docker stack down</code> 移除服务<br><code>docker service update 服务名 -h</code> 更新服务<br><code>docker service rollback 服务名</code> 回退服务</p>
+<h2 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h2><p>首先使用Golang程序对数据进行清洗，将不符合规范的条目筛除，提高查询、存储效率，降低查询结果中的噪声。<br>但单纯进行数据清洗不一定能排除所有的异常数据，在导入数据库时需要动态调整规则。</p>
+<h3 id="社交账号"><a href="#社交账号" class="headerlink" title="社交账号"></a>社交账号</h3><p>社交账号绑定信息主要是QQ和微博绑定手机号。<br>手机号使用正则检查：<code>(13[0-9]|14[01456879]|15[0-3,5-9]|16[2567]|17[0-8]|18[0-9]|19[0-3,5-9])</code><br>QQ主要依据长度判断，将小于5位和多于11位的筛除。<br>读取文件时要注意行末的换行符，还要注意字段分割符。</p>
+<h3 id="快递"><a href="#快递" class="headerlink" title="快递"></a>快递</h3><p>快递信息字段数较多，正确数据也会包含不同的格式。<br>邮件地址使用正则检查：<code>[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+</code><br>京东快递的电话信息可能包含备注等，不能仅凭正则匹配，按照长度规律进行过滤。此外，还要注意空数据的表示格式<code>\N</code>。<br>在打开顺丰文件时需要注意编码，使用golang.org/x/text/transform包打开UTF-16 LE文件。<br>由于顺丰文件是MS SQL导出的数据库脚本，在处理时要将无关SQL语句筛除。这里采用文件偏移量和行长度，从20行之后，长度大于80字符的行中解析数据。<br>此外，顺丰数据有些字段存在错位，观察原始数据发现数据库中就是错误的，通过添加特定条件识别并纠正。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>在Docker中配置7.10.1版本的Elasticsearch和Kibana，组成一个单节点ES集群，方便迁移和分析管理。<br>ES不支持root用户运行，在容器中使用elasticsearch用户，使用的uid:gid为1000:0，因此在共享目录时需要注意读写权限。但本文使用一块exFAT格式的移动SSD存储数据，由于exFAT格式不支持Linux的权限管理功能，需要对ES启动参数和硬盘挂载选项进行配置。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> exFAT无法更改文件权限和所属信息，因此在挂载时将整个磁盘配置为目标id</span><br><span class="line">mount -o uid=1000,gid=0 /dev/sdb1 /mnt</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据官方文档，这一环境变量会使容器修改数据和日志目录的所有者，即uid:gid为1000:0</span></span><br><span class="line"><span class="attr">environment:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">TAKE_FILE_OWNERSHIP</span>  <span class="comment"># docker-compose中设置es的环境变量</span></span><br></pre></td></tr></table></figure>
+<p>随后通过Kibana的开发工具创建索引。Type要被弃用了，所以为每个结构创建一个索引。<br>ES使用RESTful API通信，创建shunfeng库索引的请求如下。注意mapping中的keyword不会被分词器解析。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">PUT shunfeng/</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"mappings"</span>: &#123;</span><br><span class="line">      <span class="attr">"properties"</span>: &#123;</span><br><span class="line">        <span class="attr">"name"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"phone"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"text"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"province"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"city"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"dist"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"addr"</span>: &#123;</span><br><span class="line">          <span class="attr">"type"</span>:<span class="string">"text"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>尝试了一下自带的权限管理，对单节点容器部署来说不太高效，本地跑的话还是关闭了。</p>
+<h2 id="数据导入与查询"><a href="#数据导入与查询" class="headerlink" title="数据导入与查询"></a>数据导入与查询</h2><p>接下来，在数据清洗脚本的基础上进行修改，实现批量导入Elasticsearch数据库。<br>由于ES通信使用RESTful API，每次请求都会有TCP连接建立和断开，产生端口资源消耗：当客户端发起连接的频率过高时，处于time_wait状态的端口过多，导致客户端无法申请到通信端口。因此，通过olivere/elastic的批量处理器BulkProcessor将多次操作合并为一次请求。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">esClient, err := elastic.NewClient(elastic.SetURL(esUrl))</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	esService, err := esClient.BulkProcessor().</span><br><span class="line">		BulkActions(<span class="number">1000</span>).</span><br><span class="line">    Workers(<span class="number">4</span>).</span><br><span class="line">    Do(context.Background())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> esService.Close()</span><br></pre></td></tr></table></figure></p>
+<p>设置每次提交中包含的最大操作数量BulkActions小于1000，防止出现请求过大。按照wiki，每次请求的最大字节数BulkSize为5MB，但是在我只设置了BulkActions时貌似没有做这个限制，导致中途报错。<br>异常的document在match_all查询中可能会有较高的score，因此可以在进行数据插入的同时使用match_all查询，快速发现数据清洗的不足。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Elasticsearch提供了强大的分析能力，依靠全文搜索甚至可以根据地址进行查询。还发现其他一些有趣的查询，但这里不做详细描述。<br>本文是在笔记本上运行单节点ES数据库，产生了六十多G的虚存，并没有发挥倒排索引的全部性能。但速度依然很快，14.3亿条数据跨索引查询响应时间不超过70ms，大多数简单查询不超过20ms。<br>发现：在查一位朋友QQ绑定信息时发现了三个手机号，但只有一个是本人的；用另外两个手机号查询微博绑定信息，发现对应微博账号均因违规被封禁。结合这位朋友QQ曾不止一次被盗，猜想这两条绑定记录可能是由盗号产生的，且手机号很可能还曾用于其他黑/灰产活动。鉴于手上的数据覆盖不广，又不想支持黑产，暂且不进行验证。<br>思考：根据泄露数据的分布特征，能否追溯信息泄露源头？根据数据时效性，能否确定泄露时间？</p>
 
       
       
@@ -332,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/29/docker整理/">docker整理</a></p>
+        <p><span>本文标题:</span><a href="/2020/12/19/social-engineering-database/">Social Engineering Database Setup</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 漏断 的个人博客">漏断</a></p>
-        <p><span>发布时间:</span>2019年06月29日 - 12时35分</p>
-        <p><span>最后更新:</span>2019年06月29日 - 15时16分</p>
+        <p><span>发布时间:</span>2020年12月19日 - 17时09分</p>
+        <p><span>最后更新:</span>2020年12月19日 - 22时54分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/29/docker整理/" title="docker整理">http://houwenda.github.io/2019/06/29/docker整理/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2019/06/29/docker整理/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/12/19/social-engineering-database/" title="Social Engineering Database Setup">http://houwenda.github.io/2020/12/19/social-engineering-database/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://houwenda.github.io/2020/12/19/social-engineering-database/　　作者: 漏断" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -351,18 +349,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/10/27/cuda-for-nvidia1080ti/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/03/upload-labs-writeup/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">upload-labs复现笔记</div>
+    <a href="/2020/10/08/kernel-development-environment/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kernel开发环境配置</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -373,8 +362,8 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker指令"><span class="toc-number"></span> <span class="toc-text">docker指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-number">0.1.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-number">0.2.</span> <span class="toc-text">容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose指令"><span class="toc-number"></span> <span class="toc-text">docker-compose指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dockerfile"><span class="toc-number"></span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose-yml"><span class="toc-number"></span> <span class="toc-text">docker-compose.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-machine"><span class="toc-number"></span> <span class="toc-text">docker-machine</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-swarm"><span class="toc-number"></span> <span class="toc-text">docker swarm</span></a>
-</li></div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据清洗"><span class="toc-number">2.</span> <span class="toc-text">数据清洗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#社交账号"><span class="toc-number">2.1.</span> <span class="toc-text">社交账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快递"><span class="toc-number">2.2.</span> <span class="toc-text">快递</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置"><span class="toc-number">3.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据导入与查询"><span class="toc-number">4.</span> <span class="toc-text">数据导入与查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
@@ -418,17 +407,17 @@
 
 
 
+    
+
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/10/27/cuda-for-nvidia1080ti/" title="上一篇: Ubuntu18.04配置CUDA支持（NVIDIA 1080Ti）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/06/03/upload-labs-writeup/" title="下一篇: upload-labs复现笔记">
+            <a href="/2020/10/08/kernel-development-environment/" title="下一篇: Kernel开发环境配置">
                 <i class="fa fa-angle-right"></i>
             </a>
         
